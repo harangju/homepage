@@ -1,5 +1,5 @@
 import { GraduationCap } from "lucide-react";
-import { LinkedIn, X } from "@/components/icons";
+import { Instagram, LinkedIn, X } from "@/components/icons";
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
           © 2023 <a href="https://harangju.com/" className="hover:underline">Harang Ju</a>
         </span>
         
-        <div className="flex items-center justify-center space-x-4">
+        <div className="flex items-center justify-center space-x-3">
           <a href="https://scholar.google.com/citations?user=dDNw63AAAAAJ&hl=en" target="_blank" rel="noreferrer">
             <GraduationCap className="w-5 h-5 text-gray-900 hover:text-gray-700 transition-all duration-100" />
           </a>
@@ -19,6 +19,9 @@ export default function Footer() {
           </a>
           <a href="https://www.linkedin.com/in/harangju/" target="_blank" rel="noreferrer">
             <LinkedIn className="w-5 h-5 text-gray-900 hover:text-gray-700 transition-all duration-100" />
+          </a>
+          <a href="https://www.instagram.com/harangju/" target="_blank" rel="noreferrer">
+            <Instagram className="w-5 h-5 text-gray-900 hover:text-gray-700 transition-all duration-100" />
           </a>
         </div>
 
