@@ -32,8 +32,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
                   <Link href="/" className="hover:scale-95 transition-all duration-100">
                     <Logo className="w-7 h-12"/>
                   </Link>
-                  <nav className="flex items-center ml-auto text-sm font-medium space-x-4">
-                    <Link href="/blog">Blog</Link>
+                  <nav className="flex items-center ml-auto text-lg font-medium space-x-4">
+                    <Link href="/blog" className="hover:scale-95 transition-all duration-100">Blog</Link>
                     <ModeToggle />
                   </nav>
                 </div>

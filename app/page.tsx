@@ -17,7 +17,7 @@ export default async function PagePage() {
   }
 
   return (
-    <article className="py-6 prose dark:prose-invert">
+    <article className="py-6 prose dark:prose-invert text-xl">
       <Mdx code={page.body.code} />
     </article>
   )
