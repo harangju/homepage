@@ -31,7 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                   <Logo className="w-7 h-12"/>
                 </Link>
                 <nav className="flex items-center ml-auto text-sm font-medium space-x-4">
-                  <Link href="/about">About</Link>
+                  <Link href="/blog">Blog</Link>
                   <ModeToggle />
                 </nav>
               </div>

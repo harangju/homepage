@@ -1,17 +1,26 @@
-import { allPosts } from "@/.contentlayer/generated"
-import Link from "next/link"
+import { notFound } from "next/navigation"
+import { Metadata } from "next"
+import { allPages } from "contentlayer/generated"
+import { Mdx } from "@/components/mdx-components"
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Harang Ju",
+  description: "",
+}
+
+export default async function PagePage() {
+  const slug = "about"
+  const page = allPages.find((page) => page.slugAsParams === slug)
+
+  if (!page) {
+    notFound()
+  }
+
   return (
-    <div className="prose dark:prose-invert">
-      {allPosts.map((post) => (
-        <article key={post._id}>
-          <Link href={post.slug}>
-            <h2>{post.title}</h2>
-          </Link>
-          {post.description && <p>{post.description}</p>}
-        </article>
-      ))}
-    </div>
+    <article className="py-6 prose dark:prose-invert">
+      <h1>{page.title}</h1>
+      {page.description && <p className="text-xl">{page.description}</p>}
+      <Mdx code={page.body.code} />
+    </article>
   )
 }
