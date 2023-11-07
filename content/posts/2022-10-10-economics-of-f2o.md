@@ -1,0 +1,106 @@
+---
+layout: post
+title: Economics of free-to-own
+description: Price discovery, consumer surplus, and complementarity
+date: 2022-10-10
+tags: notes
+og_image: /assets/img/limitbreak.jpeg
+---
+
+In August 2022, [LimitBreak](http://limitbreak.com) announced its game plan to break the infantile limits of web3 gaming with its free-to-own (f2o) business model ([VentureBeat 2022](https://venturebeat.com/games/gabe-leydons-limit-break-has-200m-to-make-a-new-kind-of-blockchain-game/)). Since then, web3 game researchers have written about what it means for game development ([Vasudev 2022](https://mirror.xyz/alokvasudev.eth/GFXXAETXDGpICPyOn1X1Zc6x0-R7EPA9tg0surTeCTA), [Foo 2022](https://twitter.com/0xRyze/status/1564268854456774657)).
+
+In this post, I will review the economic implications of free-to-own (f2o):
+
+1. Free-to-own is a combination of and commitment to free mints and airdrops of NFTs.
+2. Price discovery in F2O is free, profitable, and forgiving.
+3. Consumer surplus of free NFTs is captured by the NFT project and NFT holders.
+4. Airdrops can complement existing NFTs and increase demand.
+
+### What is free-to-own?
+
+_Free-to-own_ is a term coined by [Gabriel Leydon](http://twitter.com/gabrielleydon), the CEO & co-founder of [MZ](https://www.mz.com) (creator of many top-grossing mobile games like Game of War) and now LimitBreak.
+
+<center>
+<img src="/assets/img/limitbreak.jpeg" alt="fig1" width=640>
+</center>
+<div class="caption">
+LimitBreak
+</div>
+
+F2O refers to the combination of and a commitment to two NFT distribution methods. First, the initial set of NFTs are free to _mint_, which creates the tokens on the blockchain. Second, subsequent NFTs are distributed as free _airdrops_ to the holders of the existing NFTs.
+
+LimitBreak's [DigiDaigaku](http://twitter.com/digidaigaku) NFTs are the first NFTs to officially adopt this term (though past projects have had free mints and airdrops), and many other gaming projects are following suit.
+
+### The price of free NFTs
+
+When a company releases their NFTs for free, it gets a few interesting benefits, one of which is automatic _and profitable_ price discovery.
+
+Pricing is a difficult business problem, especially in digital products that have zero marginal cost of production. In web2, if a company releases an app for free, it has to figure out other ways to monetize, such as freemium models or in-app purchases. But in web3, price discovery is _free_ through native secondary markets. Every NFT can automatically be sold on a secondary marketplace like OpenSea.
+
+For NFT projects, it is notoriously difficult to set a mint price for a new NFT collection. Price an NFT too high, and you risk not selling out, which does little to help collector sentiment. Price an NFT too low, and you miss out on revenues.
+
+In the f2o model, NFT projects no longer have to pinpoint market demand to price its NFTs. This model is more forgiving for less successful NFT releases. The market will discover a price for each NFT collection, starting at zero.
+
+<center>
+<img src="/assets/img/digidaigaku-price.png" alt="fig2" width=560>
+</center>
+<div class="caption">
+Price (ETH, line) and volume (ETH, bar) of DigiDaigaku sales
+</div>
+
+### Profiting from free NFTs
+
+Not only is price discovery automatic in web3, it can actually be profitable, thanks to royalties on secondary NFT platforms. Secondary NFT marketplaces usually take fees (around 2.5%) for themselves and also allow the creators to earn a royalty on secondary sales (around 2.5%).
+
+In f2o projects, the royalties can be set even higher (around 10%) without much complaint from NFT collectors. After all, the NFT was free. Then, the price discovery generates volume on the secondary market from which the royalties, in some cases, is higher the revenues from a hypothetical mint. DigiDaigaku has almost 10k ETH volume at 2 months since mint across its NFT collections.
+
+Another strategy by Limitbreak has been to itself own a set of Genesis DigiDaigaku NFTs. This way, Limitbreak _fairly_ receives airdrops of subsequent NFTs. By becoming a holder, a Limitbreak aligns its incentives with the holders. Thus, after the market discovers a price for its airdropped NFTs, it can sell and profit from the airdrops in the secondary market.
+
+### Supply and demand
+
+To understand the next economic implications of f2o, let's briefly overview the basic economics of supply and demand.
+
+<center>
+<img src="/assets/img/supply demand-01.png" alt="fig3" width=440>
+</center>
+<div class="caption">
+The supply and demand curves for a product with market clearing price P* and quantity Q*. The consumer surplus is the area above P* under the demand curve.
+</div>
+
+The **demand curve** is downward sloping and captures a simple notion that overall demand goes up as price goes down. The **supply curve** often has the opposite relation: the more that a producer can get for its product, the more it will produce.
+
+Some buyers get a product for less than they are willing to pay. This is the **consumer surplus**, and companies want to minimize it to get the most from their buyers.
+
+### Consumer surplus of free NFTs
+
+Usually, a company wants to minimize consumer surplus. But with free NFTs, price moves on the secondary market and generates revenue through royalties, as explained earlier.
+
+Further, the recipients of the free NFTs form an engaged community. Free NFTs not only dampen a holder's short-term expectations for ROI, but it allows holders to profit from the consumer surplus.
+
+Free airdrops also allow all holders to participate with no cost. If a mobile app is free, users have the option to try an app without paying. If an _airdrop_ is free, users have the option to use the NFT in the game without cost, thereby increasing user engagement ([Ju 2022](https://harangju.com/blog/2022/crafting/)).
+
+### Complementary NFTs
+
+Some airdrops sometimes act as [substitutes](https://en.wikipedia.org/wiki/Substitute_good) for existing NFTs from the same creator. As a simplistic example, Mutant Apes are profile pictures that were essentially airdropped to existing holders of Bored Apes. If I use a Bored Ape for my Twitter profile picture, then I can't use a Mutant Ape for my profile picture.
+
+In DigiDaigaku, the existing Genesis DigiDaigaku and the airdropped Spirit DigiDaigaku NFTs are [complementary goods](https://en.wikipedia.org/wiki/Complementary_good). You need both types of NFTs to [create](https://twitter.com/DigiDaigaku/status/1573816051082543104) either _Royal Heroes_ (for matching IDs) or _Warrior Heroes_ (for non-matching IDs). If you have just the Genesis NFT, you cannot make any _Heroes_, and if you have just the Spirit NFT, you can only make _Rogue Heroes_ which are not as good as _Royal_ or _Warrior Heroes_.
+
+Lowering prices for a good increases demand for a complementary good. For example, when a grocery store has a discount sale for burger patties, the demand for burger buns goes up. The demand curve shifts outward, either increasing quantity sold given a fixed price or increasing the price given a fixed quantity.
+
+Free, complementary airdrops take the above concept to the limit. Because the airdropped Spirit NFT was free, it not only allows price discovery for the Spirit NFT, but it also theoretically shifts the demand curve outward for the Genesis NFT. While not all free airdrops are complements, creating complements is a strategy in f2o to increase demand in the NFTs in an ecosystem.
+
+<center>
+<img src="/assets/img/supply demand-02.png" alt="fig4" width=740>
+</center>
+<div class="caption">
+Free, complementary airdrop shift demand curve outward.
+</div>
+
+### Conclusion
+
+F2O is an innovative collection of solutions to business problems in the web3 gaming space. The F2O model is early, but its impact is already felt in the web3 space. I am looking forward to seeing how it develops into a mature web3 ecosystem.
+
+_Disclaimer: I own DigiDaigaku NFTs. This post is for general information purposes only. It does not constitute investment advice or a recommendation or solicitation to buy or sell any investment and should not be used in the evaluation of the merits of making any investment decision. It should not be relied upon for accounting, legal or tax advice or investment recommendations._
+
+<div class="ml-embedded ml-lightmode" data-form="TFLxAH"></div>
+<div class="ml-embedded ml-darkmode" data-form="g66UhP"></div>

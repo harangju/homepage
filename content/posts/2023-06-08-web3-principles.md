@@ -1,0 +1,72 @@
+---
+layout: post
+title: "Web3 principles"
+description: Web3 is permissionless, trustless, censorship-resistant, & decentralized. But what does that mean?
+date: 2023-06-08 00:00
+tags: notes
+og_image: /assets/img/harang_Minimalist_flat_design_poster_neutral_colors_web3_permis_56eeb946-c6db-4d0b-be27-d8c347bdec48.png
+---
+
+In the dynamic landscape of Web3, we are showered with new terms and concepts. Among them, permissionlessness, trustlessness, censorship-resistance, and decentralization (PTCD) stand out as key pillars of Web3. However, these terms are not interchangeable, and their meanings can vary depending on the specific context within the Web3 ecosystem. Understanding their relationships and implications is essential to unravel the full potential of Web3 technologies.
+
+<div class="ml-embedded ml-lightmode" data-form="TFLxAH"></div>
+<div class="ml-embedded ml-darkmode" data-form="g66UhP"></div>
+
+<center>
+<img src="/assets/img/harang_Minimalist_flat_design_poster_neutral_colors_web3_permis_56eeb946-c6db-4d0b-be27-d8c347bdec48.png" alt="sword lightning" width=740>
+</center>
+<br/>
+
+### Defining PTCD
+
+Permissionlessness, at its core, refers to the ability for anyone to participate in a network or ecosystem without needing explicit approval from a central authority. It embodies the principle of open access, leveling the playing field, and eliminating barriers to entry. In a permissionless system, individuals can freely join, transact, and engage without the need for gatekeepers or intermediaries.
+
+Trustlessness, also referred to as trust-minimization, represents a characteristic of decentralized systems where participants can interact and transact without relying on blind trust in a central authority or intermediary. Trustlessness is achieved through the ingenious use of cryptographic protocols and consensus mechanisms that provide verifiability and security. By reducing the reliance on trust, Web3 technologies enable individuals to engage in transactions and exchanges with newfound confidence, even in the absence of personal relationships or established trust networks.
+
+Censorship-resistance, on the other hand, pertains to the system's ability to resist attempts to block, modify, or censor transactions, communications, or actions. It ensures that information flows freely and that no central authority can easily tamper with or obstruct the desired flow of data or activities. Censorship-resistance preserves the openness and integrity of the network, preventing undue control or manipulation by external forces.
+
+Decentralization, perhaps the most familiar term among these concepts, denotes the distribution of authority, control, and decision-making across a network of participants or nodes. In a decentralized system, power is not concentrated in a single entity or centralized organization. Instead, it is dispersed, granting agency and autonomy to individual participants. Decentralization enhances resilience, fosters innovation, and guards against single points of failure, ensuring a more robust and equitable ecosystem.
+
+<br/>
+### Interplay between PTCD
+
+The concepts of permissionlessness, decentralization, censorship-resistance, and trustlessness form a web of interconnected principles. However, it is important to emphasize that these concepts are not always equivalent, and their relationships can vary in intriguing ways:
+
+1. Permissionlessness and Decentralization: Permissionlessness and decentralization often intertwine, creating a powerful synergy. A decentralized system naturally tends to be permissionless, allowing anyone to participate without seeking approval. This characteristic enables open access and breaks down barriers to entry, fostering inclusivity and innovation. However, permissionless systems can also exist within centralized structures. A prime example is public blockchains where anyone can join the network, yet ultimate control resides with a small group of entities. This duality challenges our assumptions and highlights the complex interplay between permissionlessness and decentralization.
+   <br/>
+
+2. Censorship-Resistance and its Connection to Permissionlessness and Decentralization: While censorship-resistance is commonly associated with permissionless and decentralized systems, it is not exclusively tied to them. Censorship-resistant systems can emerge within centralized structures as well, exemplifying the multifaceted nature of this concept. Encryption-based messaging services provide a compelling example. These services, despite operating within centralized infrastructures, protect messages from third-party interference, ensuring censorship-resistance. This intriguing phenomenon expands our understanding and demonstrates that censorship-resistance can manifest in various forms, transcending the traditional boundaries of decentralization and permissionlessness.
+   <br/>
+
+3. Trustlessness as a Characteristic of Decentralization: Trustlessness is a powerful attribute that can be present in both centralized and decentralized systems. However, it is more commonly associated with decentralized architectures. Decentralization, by distributing authority and decision-making across a network, minimizes the need for trust in a central authority. Participants can interact directly, relying on cryptographic guarantees and consensus mechanisms to establish trust in the absence of centralized control. This dynamic empowers individuals, fosters peer-to-peer collaboration, and builds systems that operate based on verifiable protocols rather than blind faith. While trustlessness can exist in centralized systems to some extent, it finds its true home in the decentralized realm, where it flourishes and reshapes our understanding of trust and reliance.
+
+The interplay between permissionlessness, decentralization, censorship-resistance, and trustlessness defies simple categorizations.
+
+<br/>
+### Contexts for PTCD
+
+In the evaluation of the concepts of permissionlessness, censorship-resistance, trustlessness, and decentralization, various contexts come into play, each shedding light on the nuanced relationships between these principles. Exploring these contexts allows us to grasp the intricacies and trade-offs involved:
+
+1. Public Blockchains: Public blockchains like Bitcoin and Ethereum epitomize the alignment of these concepts, as they embody permissionlessness, censorship-resistance, trustlessness, and decentralization in a cohesive manner. They allow anyone to participate, ensure resistance to censorship, minimize the need for trust, and distribute authority among network participants.
+   <br/>
+
+2. Private Blockchains and Permissioned Systems: In the realm of private blockchains or permissioned systems, the equivalence weakens. While they may still exhibit certain degrees of decentralization, these systems often require permission to join and interact. Consequently, they introduce a centralized control mechanism, limiting permissionlessness and potentially compromising the resilience and censorship-resistance associated with public blockchains. Trustlessness may also diminish, as participants must place trust in the central authority governing the network.
+   <br/>
+
+3. Off-Chain Solutions: Web3 applications frequently leverage off-chain solutions, such as layer 2 protocols or sidechains, to enhance scalability and efficiency. However, these solutions can introduce trade-offs. While they may still provide some level of decentralization and trustlessness, permissionlessness and censorship-resistance may be compromised due to the reliance on specific rules or protocols established by off-chain entities or intermediaries.
+   <br/>
+
+4. Centralized Applications with Encryption: Remarkably, even within centralized structures, certain applications can offer censorship-resistance and trustlessness through encryption techniques. End-to-end encrypted messaging services exemplify this paradigm, securing communications and preventing third-party interference. Nevertheless, the underlying infrastructure of these applications remains centralized, lacking the decentralization and permissionlessness typically associated with Web3.
+
+As we consider these concepts, it's clear that a holistic framework is essential for understanding their interplay within the Web3 landscape. While there is no one-size-fits-all framework that universally applies, careful consideration of the context, technology, and goals can guide us towards a comprehensive understanding of permissionlessness, censorship-resistance, trustlessness, and decentralization.
+
+---
+
+<br/>
+
+Thanks for reading. If you have comments or suggestions, you can email me at [blog@harangju.com](mailto:blog@harangju.com) or find me on Twitter [@harangju](https://twitter.com/harangju).
+
+If you enjoyed today's newsletter, please share it with your friends!
+
+<div class="ml-embedded ml-lightmode" data-form="TFLxAH"></div>
+<div class="ml-embedded ml-darkmode" data-form="g66UhP"></div>

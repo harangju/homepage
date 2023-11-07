@@ -1,0 +1,40 @@
+---
+layout: post
+title: Speculative volatility in free-to-own?
+description:
+date: 2023-01-11
+tags: notes
+---
+
+*TLDR: DigiDaigaku’s free-to-own model is not at a risk of the massive speculative volatility that some of the token-generating NFTs had in 2021.*
+
+[DigiDaigaku](http://digidaigaku.com) is an NFT collection and (soon™️) a game. The game is presumably some sort of anime MMO like [Genshin Impact](https://genshin.mihoyo.com), and the NFTs will cater to the 5% high-spending whales who will want to feel like lords or kings in the game, which [Gabe](http://twitter.com/gabrielleydon) (i.e., Gabriel Leydon, co-founder of MZ and [Limitbreak](http://limitbreak.com)) mentioned was the key to getting whales to spend.
+
+The question I want to explore here is the economic dynamics of DigiDaigaku’s economic model free-to-own and how that will impact price dynamics of its NFTs. In free-to-own, existing NFT holders receive free airdrops of new DigiDaigaku NFTs. So the existing holders receive new NFTs and can distribute them through secondary marketplaces.
+
+Free-to-own heralds a new paradigm for both web3 and games by continuous releasing gaming content as NFTs. In web3, content—such as art, writing, and pfps—are distributed and monetized as NFTs but only once in a blue moon. In gaming, new content has always been a way that games engaged players, with many free-to-play games releasing content weekly. Now in free-to-own, NFTs may be frequently released as content in a game.
+
+The free-to-own model has flavors of token-generating NFTs, which were some of the most volatile NFT collections in the 2021 bull and 2022 bear markets. In collections such as Axie Infinity and Cyberkongz (I invested in both), NFTs generated fungible tokens which were essentially indirectly purchased by newcomers. Both projects had ridiculous returns. [Cyberkongz](https://opensea.io/collection/cyberkongz/activity) had over 20,000X returns (200+ ETH from 0.01 ETH mint) with 1,000 Genesis NFTs, much as in DigiDaigaku with 2,022 Genesis NFTs. [AXS](https://www.coingecko.com/en/coins/axie-infinity) (i.e., Axie Infinity Shards) had 1,500X returns ($0.01 to $150), and axies were sold for hundreds of dollars for many months. While the price action of these collections aren't unique, they were relatively sharp, even in NFT standards.
+
+<center>
+<img src="/assets/img/price ck.png" alt="price cyberkongz" width=360>
+<img src="/assets/img/price axs.png" alt="price axs" width=360>
+</center>
+<div class="caption">
+Price charts for Cyberkongz Genesis NFTs and AXS
+</div>
+
+While there are many difference between free-to-own and token-generating NFTs, one clear difference is that free-to-own does not have a *fixed* issuance of any *fungible* tokens. DigiDaigaku holders receive *non-fungible* tokens *without* fixed issuance. In contrast, a Cyberkongz Genesis NFT generates 10 [$BANANA](https://www.coingecko.com/en/coins/banana) tokens per day, and axies can generate some normal distribution of [$SLP](https://www.coingecko.com/en/coins/smooth-love-potion) tokens per day through gameplay. Because of the relatively steady issuance of fungible tokens with a *liquid market price*, NFT collectors used current market rates for the tokens to extrapolate an ROI into the future. Axie Infinity guilds raised millions of funding based on this extrapolation. But the returns were based on new entrants who were essentially directly paying existing holders.
+
+In free-to-own, there is no fixed issuance of tokens or any NFT collection. It is near impossible to naively extrapolate returns as one could with *token-earning* NFTs. Holders of DigiDaigaku Genesis NFTs have already received and crafted free NFTs from a handful of collections, i.e., Spirits, Heroes, Dark Spirits, Dark Hero Spirits, and Super Villain potions. It is difficult, if not impossible, to extrapolate the price of each new collection. So, free-to-own does not suffer from the speculative volatility of previous token-generating NFT collections.
+
+So how does the economic dynamics of free-to-own affect price dynamics? Well, speculators cannot naively extrapolate passive returns as they, and even investors, have in play-to-earn. But if people do start to extrapolate about future returns on free-to-own game NFTs, that is a red flag that we may be in for speculative volatility, both to the upside and to the downside.
+
+Based on the recent [announcement](https://medium.com/limit-break/introducing-opt-in-programmable-royalties-and-more-through-staking-by-limit-break-3a166e3749e3) of Limitbreak's new staking tool which allows for enforced, programmable royalties of secondary sales, it is easy to guess that Limitbreak's next Villain collection will have royalties to the Villain minters. We may eventually see speculators calculate historical ROI on royalties (and perhaps also airdrops) to extrapolate future ROI. As mentioned, this extropolation would be a red flag for a bubble forming.
+
+Considering that Gabe has spent most of his career being one of, if not *the* best, the best sellers of digital game items, I remain bullish about DigiDaigaku. However, I am holding in DigiDaigaku NFTs with an expectation of profit, though with a long time horizon. Ideally, the price of the flagship DigiDaigaku is not as volatile as some of the other NFT collections and rises smoothly over time. But illiquidity is a feature of the collection, with only 2022 Genesis NFTs. So volatility is only to be expected. It’s easy to see in hindsight what was wrong with token-generated NFTs. As follows, It is hard to see now what is wrong, if anything, about free-to-own NFTs. DigiDaigaku has only been public for 4 months, so there is much to see yet about how the collection and the game will play out.
+
+If you have any thoughts on the topics discussed here, please [reach out](https://twitter.com/{{ site.twitter_username }}).
+
+<div class="ml-embedded ml-lightmode" data-form="TFLxAH"></div>
+<div class="ml-embedded ml-darkmode" data-form="g66UhP"></div>

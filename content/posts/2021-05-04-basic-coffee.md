@@ -1,0 +1,30 @@
+---
+layout: post
+title: Cheap, delicious coffee
+description: Simple coffee upgrades for better daily coffee
+date: 2021-05-04
+tags: notes
+---
+
+Over the past months, I found that one can make coffee that is both really cheap and ridiculously delicious. I don't really see the people around me doing this. Many people either buy coffee at a cafe or get expensive coffee machines with expensive capsules. Both are fine, but they're just not the cheapest or the most delicious. Sadly, they can sometimes be both expensive *and* taste bad. I'm no coffee expert, but once I started doing these things, I found it hard to go back.
+
+In this post, I want to summarize and share practical tips that helped me make cheap and delicious coffee.
+
+#### Things you need
+1. First, you need good coffee that is freshly roasted. I get mine freshly roasted and delivered by Trade Coffee, which delivers (with free shipping) coffee from different roasteries in the US ([referral code](http://s.trdcfe.me/Z3tjf) for a free first bag). I get the double bag option which brings you to around $0.83 (USD) per 400ml cup, given (2 bags * $12.50/bag) / (2 bags * 340g/bag * 24g coffee/400ml water * 400ml/cup).
+2. Second, you need freshly ground coffee. You need a burr grinder, not a blade grinder, so that you can adjust your grind size and get an even grind. You could get a hand grinder (e.g., a nice ~$70 [Porlex](https://www.amazon.com/dp/B0044ZA066/ref=cm_sw_r_tw_dp_G9SDRRMR6XYM90GEEWKG) or a cheaper grinder ~$40) or an electric one (e.g., ~$140 [Baratza Encore](https://www.amazon.com/dp/B007F183LK/ref=cm_sw_em_r_mt_dp_SV55MDASYQCQP2HVZNKC) or I use the ~$80 [Oxo](https://www.amazon.com/dp/B07CSKGLMM/ref=cm_sw_em_r_mt_dp_K6EV43QEX95XQ4Y0EVF4)). This is the biggest investment, but using an electric burr grinder (even the not-the-best Oxo grinder that I use) is a great experience.
+3. Third, you can get either a French press for around $20 on Amazon (or even $10 at Ikea which works fine) or a V60 dripper for just [$10](https://www.amazon.com/dp/B001RBTSMM/ref=cm_sw_em_r_mt_dp_6CGVKQBYQKNE89FEF7JD) on Amazon plus [paper filters](https://www.amazon.com/dp/B001U7EOYA/ref=cm_sw_em_r_mt_dp_YSAHG3K6S15KK13S7K6M?_encoding=UTF8&psc=1) which is $0.08 per count. I have been using just a French press, with which you can also make a cold brew, and I just ordered the V60, which I am very excited to try. Obviously, other brew methods are great too.
+4. Fourth, you need filtered water--something like a Brita filter which many people already have.
+5. Fifth, you need a digital kitchen scale, which many people already have. I use [this](https://www.amazon.com/dp/B004101GQC/ref=cm_sw_em_r_mt_dp_GPG4YX3B5Z70D0EZDHTZ?_encoding=UTF8&psc=1) one around $11.
+6. Sixth, you need a kettle which many people already have.
+7. Seventh and finally, you need good recipe and good technique. Watch James Hoffmann's videos on the ultimate [French press](https://youtu.be/st571DYYTR8) and [V60](https://youtu.be/AI4ynXzkSQo) techniques. James Hoffmann is the best.
+
+Update (2021-06-04): I've been using the V60 for a month or so, and it's the best. I found Tetsu Kasuya's [4:6 method](https://youtu.be/wmCW8xSWGZY) to be easier than some of the other V60 brew methods and makes some really great coffee.
+
+You know the coffee is good when it's still delicious after it cools down to room temperature. Hot or iced coffee tends to mask any overly bitter or sour tastes, which is why people say they like coffee hot or iced.
+
+I assume most people have filtered water, a kettle, and even a digital scale. So, if you just get a burr grinder, which is the most expensive thing here, and either a $20 French press or a $10 V60 dripper, then you can have coffee that is super delicious and super cheap.
+
+Cheers.
+
+Photo by <a target="_blank" href="https://unsplash.com/@ivancalderon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ivan Calderon</a> on <a target="_blank" href="https://unsplash.com/s/photos/french-press?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
