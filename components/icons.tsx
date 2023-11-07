@@ -1,4 +1,4 @@
-const X = ( { className } : { className: string | undefined } ) => {
+const X = ( { className } : { className?: string } ) => {
   return (
     <svg 
       className={`fill-current ${className}`}
@@ -9,7 +9,7 @@ const X = ( { className } : { className: string | undefined } ) => {
   );
 };
 
-const Logo = ( { className } : { className: string | undefined } ) => {
+const Logo = ( { className } : { className?: string } ) => {
   return (
     <svg 
       className={`fill-current ${className}`}
@@ -22,7 +22,7 @@ const Logo = ( { className } : { className: string | undefined } ) => {
   );
 };
 
-const LinkedIn = ( { className } : { className: string | undefined } ) => {
+const LinkedIn = ( { className } : { className?: string } ) => {
   return (
     <svg 
       className={`fill-current ${className}`}
@@ -33,7 +33,7 @@ const LinkedIn = ( { className } : { className: string | undefined } ) => {
   );
 };
 
-const Instagram = ( { className } : { className: string | undefined } ) => {
+const Instagram = ( { className } : { className?: string } ) => {
   return (    
     <svg 
       className={`fill-current ${className}`}

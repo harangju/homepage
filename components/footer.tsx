@@ -1,9 +1,9 @@
 import { GraduationCap } from "lucide-react";
 import { Instagram, LinkedIn, X } from "@/components/icons";
 
-export default function Footer() {
+export default function Footer({ className } : { className?: string }) {
   return (
-    <footer className="fixed bottom-0 w-full z-20 max-w-2xl py-2 px-4 border-t">
+    <footer className={`flex w-full z-20 py-2 border-t ${className}`}>
       <div className="flex justify-between w-full">
 
         <span className="text-sm text-gray-900 sm:text-center 700:text-gray-400">

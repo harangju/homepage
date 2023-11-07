@@ -25,19 +25,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${inter.className}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="max-w-2xl mx-auto py-10 px-4">
-            <header>
-              <div className="flex items-center justify-between mb-6">
-                <Link href="/" className="hover:scale-95 transition-all duration-100">
-                  <Logo className="w-7 h-12"/>
-                </Link>
-                <nav className="flex items-center ml-auto text-sm font-medium space-x-4">
-                  <Link href="/blog">Blog</Link>
-                  <ModeToggle />
-                </nav>
-              </div>
-            </header>
-            <main>{children}</main>
+          <div className="flex flex-col h-screen justify-between max-w-2xl mx-auto py-10 px-4">
+            <div>
+              <header>
+                <div className="flex items-center justify-between mb-6">
+                  <Link href="/" className="hover:scale-95 transition-all duration-100">
+                    <Logo className="w-7 h-12"/>
+                  </Link>
+                  <nav className="flex items-center ml-auto text-sm font-medium space-x-4">
+                    <Link href="/blog">Blog</Link>
+                    <ModeToggle />
+                  </nav>
+                </div>
+              </header>
+              <main>{children}</main>
+            </div>
             <Footer />
           </div>
           <Analytics />
