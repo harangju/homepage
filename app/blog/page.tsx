@@ -12,14 +12,10 @@ export default function Page() {
             <Link href={post.slug}>
               <h3 className="mb-0">{post.title}</h3>
             </Link>
-            <p className="text-gray-700">
-              {(new Date(Date.parse(post.date))).toDateString()}
+            <p>
+              { (new Date(Date.parse(post.date))).toDateString() }
               &nbsp;
-              {
-                post.tag && (
-                  <span className="border rounded px-1 py-0.5 border-gray-400">#{post.tag}</span>
-                )
-              }
+              { post.tag && <span className="border rounded px-1 py-0.5 border-gray-400">#{post.tag}</span> }
             </p>
             
             {post.description && <p>{post.description}</p>}
