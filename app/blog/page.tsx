@@ -18,7 +18,7 @@ export default function Page() {
               </p>
               {
                 post.tag && 
-                <a className="border rounded px-1 border-gray-400 no-underline">#{post.tag}</a> 
+                <Link href={`/tag/${post.tag}`} className="border rounded px-1 border-gray-400 no-underline">#{post.tag}</Link>
               }
             </div>
             {post.description && <p>{post.description}</p>}
