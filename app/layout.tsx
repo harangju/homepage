@@ -25,7 +25,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${inter.className}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="flex flex-col h-screen justify-between max-w-2xl mx-auto pt-10 px-4">
+          <div className="flex flex-col h-[calc(100dvh)] justify-between max-w-2xl mx-auto pt-10 px-4">
             <div>
               <header>
                 <div className="flex items-center justify-between mb-6">
