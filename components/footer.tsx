@@ -12,7 +12,7 @@ export default function Footer({ className } : { className?: string }) {
         
         <div className="flex items-center justify-center space-x-3">
           <a href="/Harang Ju CV.pdf" target="_blank" rel="noreferrer">
-            <FileText className="w-5 h-5 text-gray-900 hover:text-gray-700 transition-all duration-100" />
+            <FileText className="w-5 h-5 -mr-[3px] text-gray-900 hover:text-gray-700 transition-all duration-100" />
           </a>
           <a href="https://scholar.google.com/citations?user=dDNw63AAAAAJ&hl=en" target="_blank" rel="noreferrer">
             <GraduationCap className="w-5 h-5 text-gray-900 hover:text-gray-700 transition-all duration-100" />
