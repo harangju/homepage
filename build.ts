@@ -3,6 +3,7 @@ import plugin from "bun-plugin-tailwind";
 import { existsSync } from "fs";
 import { rm } from "fs/promises";
 import path from "path";
+import { spawnSync } from "child_process";
 
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
   console.log(`
@@ -107,6 +108,18 @@ const formatFileSize = (bytes: number): string => {
 
 console.log("\n🚀 Starting build process...\n");
 
+// Process content at build time
+console.log("📝 Processing content...");
+const contentResult = spawnSync("bun", ["run", "src/utils/build-content.ts"], {
+  stdio: "inherit",
+  cwd: process.cwd()
+});
+
+if (contentResult.status !== 0) {
+  console.error("❌ Content processing failed");
+  process.exit(1);
+}
+
 const cliConfig = parseArgs();
 const outdir = cliConfig.outdir || path.join(process.cwd(), "dist");
 
@@ -117,10 +130,8 @@ if (existsSync(outdir)) {
 
 const start = performance.now();
 
-const entrypoints = [...new Bun.Glob("**.html").scanSync("src")]
-  .map(a => path.resolve("src", a))
-  .filter(dir => !dir.includes("node_modules"));
-console.log(`📄 Found ${entrypoints.length} HTML ${entrypoints.length === 1 ? "file" : "files"} to process\n`);
+const entrypoints = [path.resolve("src", "index.html")];
+console.log(`📄 Building HTML entry point: ${entrypoints[0]}\n`);
 
 const result = await Bun.build({
   entrypoints,

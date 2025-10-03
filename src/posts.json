@@ -1,0 +1,9 @@
+[
+  {
+    "slug": "hello",
+    "frontmatter": {
+      "title": "Hello"
+    },
+    "content": "Hello world!"
+  }
+]

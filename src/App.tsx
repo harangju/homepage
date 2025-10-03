@@ -1,17 +1,25 @@
-import "./index.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./pages";
+import { Layout } from "./components";
 
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
-
-export function App() {
+export default function App() {
   return (
-    <div className="max-w-7xl mx-auto p-8 text-center relative z-10">
-      <h1 className="text-5xl font-bold my-4 leading-tight">Hello World</h1>
-      <p>
-        Edit <code className="bg-[#1a1a1a] px-2 py-1 rounded font-mono">src/App.tsx</code> and save to test HMR
-      </p>
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="*"
+            element={
+              <main>
+                <h1 className="text-3xl font-bold mb-6">Page Not Found</h1>
+                <p>The page you're looking for doesn't exist.</p>
+                <a href="/" className="link">← Back to Home</a>
+              </main>
+            }
+          />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
-
-export default App;

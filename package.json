@@ -3,19 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun --hot src/index.tsx",
-    "start": "NODE_ENV=production bun src/index.tsx",
-    "build": "bun run build.ts"
+    "dev": "bun --hot src/index.html",
+    "build": "bun run build.ts",
+    "serve": "bun run --production src/index.html"
   },
   "dependencies": {
     "bun-plugin-tailwind": "^0.0.15",
+    "lucide-react": "^0.544.0",
     "react": "^19",
     "react-dom": "^19",
+    "react-router-dom": "^7.9.3",
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/bun": "latest",
     "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@types/bun": "latest"
+    "@types/react-dom": "^19"
   }
 }
