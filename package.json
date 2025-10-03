@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "bun --hot src/index.html",
     "build": "rm -rf build && bun build src/index.html --outdir build --minify --target browser --define.process.env.NODE_ENV=production",
-    "serve": "bun run --production build/index.html"
+    "serve": "bun run --production build/index.html",
+    "deploy": "bun run build && firebase deploy --only hosting"
   },
   "dependencies": {
     "react": "^19",
