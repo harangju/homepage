@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const InstagramIcon: React.FC<{ className?: string }> = ({ className = '' }) => (
+export const Instagram: React.FC<{ className?: string }> = ({ className = '' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -13,7 +13,7 @@ export const InstagramIcon: React.FC<{ className?: string }> = ({ className = ''
   </svg>
 );
 
-export const LinkedInIcon: React.FC<{ className?: string }> = ({ className = '' }) => (
+export const LinkedIn: React.FC<{ className?: string }> = ({ className = '' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -26,7 +26,7 @@ export const LinkedInIcon: React.FC<{ className?: string }> = ({ className = '' 
   </svg>
 );
 
-export const XIcon: React.FC<{ className?: string }> = ({ className = '' }) => (
+export const X: React.FC<{ className?: string }> = ({ className = '' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
@@ -37,4 +37,12 @@ export const XIcon: React.FC<{ className?: string }> = ({ className = '' }) => (
   >
     <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
   </svg>
+);
+
+export const FileText: React.FC<{ className?: string }> = ({ className = '' }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text-icon lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+);
+
+export const GraduationCap: React.FC<{ className?: string }> = ({ className = '' }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap-icon lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
 );

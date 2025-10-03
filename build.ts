@@ -1,5 +1,4 @@
 #!/usr/bin/env bun
-import plugin from "bun-plugin-tailwind";
 import { existsSync } from "fs";
 import { rm } from "fs/promises";
 import path from "path";
@@ -108,17 +107,7 @@ const formatFileSize = (bytes: number): string => {
 
 console.log("\n🚀 Starting build process...\n");
 
-// Process content at build time
-console.log("📝 Processing content...");
-const contentResult = spawnSync("bun", ["run", "src/utils/build-content.ts"], {
-  stdio: "inherit",
-  cwd: process.cwd()
-});
-
-if (contentResult.status !== 0) {
-  console.error("❌ Content processing failed");
-  process.exit(1);
-}
+// Skip content processing for minimal build
 
 const cliConfig = parseArgs();
 const outdir = cliConfig.outdir || path.join(process.cwd(), "dist");
@@ -136,7 +125,6 @@ console.log(`📄 Building HTML entry point: ${entrypoints[0]}\n`);
 const result = await Bun.build({
   entrypoints,
   outdir,
-  plugins: [plugin],
   minify: true,
   target: "browser",
   sourcemap: "linked",
