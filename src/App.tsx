@@ -1,4 +1,4 @@
-import { FileText, GraduationCap, Instagram, LinkedIn, X } from "./utils/icons";
+import { FileText, GitHub, GraduationCap, Instagram, LinkedIn, X } from "./icons";
 
 function Footer() {
   return (
@@ -14,6 +14,9 @@ function Footer() {
           </a>
           <a className="link-hover hover-scale-95" href="https://scholar.google.com/citations?user=dDNw63AAAAAJ&hl=en" target="_blank" rel="noreferrer">
             <GraduationCap className="w-5 h-5" />
+          </a>
+          <a className="link-hover hover-scale-95" href="https://github.com/harangju/homepage" target="_blank" rel="noreferrer">
+            <GitHub className="w-5 h-5" />
           </a>
           <a className="link-hover hover-scale-95" href="https://www.instagram.com/harangju/" target="_blank" rel="noreferrer">
             <Instagram className="w-5 h-5" />
