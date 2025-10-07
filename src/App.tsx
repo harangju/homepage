@@ -10,7 +10,7 @@ function Footer() {
 
         <div className="flex items-center justify-center space-x-3 transition-all duration-100">
           <a className="link-hover hover-scale-95" href="https://livejohnshopkins-my.sharepoint.com/:b:/g/personal/hju7_jh_edu/EbLwp2DavixGtxZVEA9WzCgBVKrlM1egzPWAWj_UdFwraw?e=f7miUq" target="_blank" rel="noreferrer">
-            <FileText className="w-5 h-5 -mr-3px" />
+            <FileText className="w-5 h-5" />
           </a>
           <a className="link-hover hover-scale-95" href="https://scholar.google.com/citations?user=dDNw63AAAAAJ&hl=en" target="_blank" rel="noreferrer">
             <GraduationCap className="w-5 h-5" />
