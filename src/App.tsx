@@ -9,22 +9,58 @@ function Footer() {
         </span>
 
         <div className="flex items-center justify-center space-x-3 transition-all duration-100">
-          <a className="link-hover hover-scale-95" href="https://livejohnshopkins-my.sharepoint.com/:b:/g/personal/hju7_jh_edu/EbLwp2DavixGtxZVEA9WzCgBVKrlM1egzPWAWj_UdFwraw?e=f7miUq" target="_blank" rel="noreferrer">
+          <a
+            className="link-hover hover-scale-95"
+            href="https://livejohnshopkins-my.sharepoint.com/:b:/g/personal/hju7_jh_edu/EbLwp2DavixGtxZVEA9WzCgBVKrlM1egzPWAWj_UdFwraw?e=f7miUq"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="View resume"
+          >
             <FileText className="w-5 h-5" />
           </a>
-          <a className="link-hover hover-scale-95" href="https://scholar.google.com/citations?user=dDNw63AAAAAJ&hl=en" target="_blank" rel="noreferrer">
+          <a
+            className="link-hover hover-scale-95"
+            href="https://scholar.google.com/citations?user=dDNw63AAAAAJ&hl=en"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Google Scholar profile"
+          >
             <GraduationCap className="w-5 h-5" />
           </a>
-          <a className="link-hover hover-scale-95" href="https://github.com/harangju/homepage" target="_blank" rel="noreferrer">
+          <a
+            className="link-hover hover-scale-95"
+            href="https://github.com/harangju/homepage"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub repository"
+          >
             <GitHub className="w-5 h-5" />
           </a>
-          <a className="link-hover hover-scale-95" href="https://www.instagram.com/harangju/" target="_blank" rel="noreferrer">
+          <a
+            className="link-hover hover-scale-95"
+            href="https://www.instagram.com/harangju/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram profile"
+          >
             <Instagram className="w-5 h-5" />
           </a>
-          <a className="link-hover hover-scale-95" href="https://x.com/harangju/" target="_blank" rel="noreferrer">
+          <a
+            className="link-hover hover-scale-95"
+            href="https://x.com/harangju/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="X profile"
+          >
             <X className="w-5 h-5" />
           </a>
-          <a className="link-hover hover-scale-95" href="https://www.linkedin.com/in/harangju/" target="_blank" rel="noreferrer">
+          <a
+            className="link-hover hover-scale-95"
+            href="https://www.linkedin.com/in/harangju/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn profile"
+          >
             <LinkedIn className="w-5 h-5" />
           </a>
         </div>
@@ -37,7 +73,7 @@ function Home() {
   return (
     <main>
       <div className="prose py-6 text-xl max-w-none leading-relaxed">
-        <p className="mb-6">
+        <p className="mb-6" role="heading" aria-level="1">
           Hi, I'm Harang Ju, and I research applied AI.
         </p>
 
