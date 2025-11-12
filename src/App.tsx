@@ -72,7 +72,11 @@ function Home() {
         </p>
 
         <p className="mb-6">
-          I'm an assistant professor at <a href="https://carey.jhu.edu/faculty/harang-ju-phd/" className="link">Johns Hopkins</a>, a co-director of the <a href="https://cdhai.carey.jhu.edu/" className="link">AI Agent Lab</a>, a digital fellow at <a href="https://ide.mit.edu" className="link">MIT</a>, and an advisor at <a href="https://twitter.com/Moku_HQ" className="link">Moku</a>. Previously, I was a postdoc at <a href="https://ide.mit.edu" className="link">MIT</a> and received my PhD in neuroscience at <a href="https://www.upenn.edu/" className="link">UPenn</a>.
+          I'm an assistant professor at <a href="https://carey.jhu.edu/faculty/harang-ju-phd/" className="link">Johns Hopkins</a>, a co-director of the <a href="https://cdhai.carey.jhu.edu/" className="link">AI Agent Lab</a>, a digital fellow at <a href="https://ide.mit.edu" className="link">MIT</a>, and an advisor at <a href="https://twitter.com/Moku_HQ" className="link">Moku</a>.
+        </p>
+
+        <p className="mb-6">
+          Previously, I was a postdoc at <a href="https://ide.mit.edu" className="link">MIT</a> and received my PhD in neuroscience at <a href="https://www.upenn.edu/" className="link">UPenn</a>.
         </p>
 
         <p className="mb-6">

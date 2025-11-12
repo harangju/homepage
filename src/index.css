@@ -1,11 +1,11 @@
 /* Minimal CSS for portfolio app */
 
 :root {
-  --text-color: #0f172a; /* slate-900 */
-  --bg-color: #ffffff; /* white */
+  --text-color: #26251e;
+  --bg-color: #f7f7f4;
   --link-color: #1d4ed8; /* blue-700 */
   --link-hover-color: #2563eb; /* blue-600 */
-  --border-color: #e2e8f0; /* slate-200 */
+  --border-color: #d4d4d0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -146,24 +146,22 @@ body {
 }
 
 .prose a {
-  color: var(--link-color);
-  text-decoration: none;
-  transition: color 0.15s ease-in-out;
+  color: inherit;
+  text-decoration: underline;
 }
 
 .prose a:hover {
-  color: var(--link-hover-color);
+  color: inherit;
 }
 
 /* Links */
 .link {
-  color: var(--link-color);
-  text-decoration: none;
-  transition: color 0.15s ease-in-out;
+  color: inherit;
+  text-decoration: underline;
 }
 
 .link:hover {
-  color: var(--link-hover-color);
+  color: inherit;
 }
 
 .link-hover:hover {
