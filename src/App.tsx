@@ -15,7 +15,7 @@ function Footer() {
         </a>
         <a
           className="link-hover hover-scale-95"
-          href="https://scholar.google.com/citations?user=dDNw63AAAAAJ&hl=en"
+          href="https://scholar.google.com/citations?hl=en&user=dDNw63AAAAAJ&view_op=list_works&sortby=pubdate"
           target="_blank"
           rel="noreferrer"
           aria-label="Google Scholar profile"
@@ -68,19 +68,19 @@ function Home() {
     <main>
       <div className="prose py-6 text-xl max-w-none leading-relaxed">
         <p className="mb-6" role="heading" aria-level={1}>
-          Hey, I'm Harang Ju.
+          Hi, I'm Harang Ju.
         </p>
 
         <p className="mb-6">
-          I'm an assistant professor at <a href="https://carey.jhu.edu/faculty/harang-ju-phd/" className="link">Johns Hopkins</a>, a co-director of the <a href="https://cdhai.carey.jhu.edu/" className="link">AI Agent Lab</a>, a digital fellow at <a href="https://ide.mit.edu" className="link">MIT</a>, and an advisor at <a href="https://twitter.com/Moku_HQ" className="link">Moku</a>.
+          I'm an assistant professor at <a href="https://carey.jhu.edu/faculty/harang-ju-phd/" className="link">Johns Hopkins</a>, where I co-direct the <a href="https://cdhai.carey.jhu.edu/" className="link">AI Agent Lab</a>. I'm also a digital fellow at <a href="https://ide.mit.edu" className="link">MIT</a> and an advisor at <a href="https://twitter.com/Moku_HQ" className="link">Moku</a>.
         </p>
 
         <p className="mb-6">
-          Previously, I was a postdoc at <a href="https://ide.mit.edu" className="link">MIT</a> and received my PhD in neuroscience at <a href="https://www.upenn.edu/" className="link">UPenn</a>.
+          Previously, I was a postdoc at <a href="https://ide.mit.edu" className="link">MIT</a> and received my PhD from <a href="https://www.upenn.edu/" className="link">UPenn</a>.
         </p>
 
         <p className="mb-6">
-          Outside of work, I enjoy taking <a href="https://www.instagram.com/harangju/" className="link">photos</a>. As my personal belief, I affirm the <a href="https://www.ccel.org/creeds/nicene.creed.html" className="link">Nicene Creed</a>.
+          Outside of work, I enjoy taking <a href="https://www.instagram.com/harangju/" className="link">photos</a>. As my faith, I affirm the <a href="https://www.ccel.org/creeds/nicene.creed.html" className="link">Nicene Creed</a>.
         </p>
       </div>
     </main>

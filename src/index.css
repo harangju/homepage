@@ -190,3 +190,11 @@ footer a:hover {
 .hover-scale-95:hover {
   transform: scale(0.95);
 }
+
+.no-underline {
+  text-decoration: none;
+}
+
+.font-bold {
+  font-weight: 700;
+}

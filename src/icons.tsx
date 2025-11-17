@@ -55,31 +55,35 @@ export const X: React.FC<{ className?: string }> = ({ className = '' }) => (
 export const FileText: React.FC<{ className?: string }> = ({ className = '' }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
-    width="24" 
-    height="24" 
-    viewBox="0 0 24 24" 
+    width="16" 
+    height="16" 
+    viewBox="0 0 16 16" 
     fill="none" 
     stroke="currentColor" 
-    strokeWidth="2" 
+    strokeWidth="1.33" 
     strokeLinecap="round" 
     strokeLinejoin="round" 
     className={className}
   >
-    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>
+    <path d="M10 1.33H4a1.33 1.33 0 0 0-1.33 1.33v10.67a1.33 1.33 0 0 0 1.33 1.33h8a1.33 1.33 0 0 0 1.33-1.33V4.67Z"/>
+    <path d="M9.33 1.33v2.67a1.33 1.33 0 0 0 1.33 1.33h2.67"/>
+    <path d="M6.67 6H5.33"/>
+    <path d="M10.67 8.67H5.33"/>
+    <path d="M10.67 11.33H5.33"/>
   </svg>
 );
 
 export const GraduationCap: React.FC<{ className?: string }> = ({ className = '' }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
-    width="24" 
-    height="24" 
-    viewBox="0 0 24 24" 
+    width="16" 
+    height="16" 
+    viewBox="0 0 16 16" 
     fill="none" 
     stroke="currentColor" 
-    strokeWidth="2" 
+    strokeWidth="1.33" 
     strokeLinecap="round" strokeLinejoin="round" className={className}
   >
-    <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+    <path d="M14.28 7.28a0.67 0.67 0 0 0-.013-1.225L8.55 3.45a1.33 1.33 0 0 0-1.1 0L1.73 6.05a0.67 0.67 0 0 0 0 1.22l5.71 2.61a1.33 1.33 0 0 0 1.1 0z"/><path d="M14.67 6.67v4"/><path d="M4 8.33V10.67a4 2 0 0 0 8 0V8.33"/>
   </svg>
 );
