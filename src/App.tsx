@@ -80,7 +80,7 @@ function Home() {
         </p>
 
         <p className="mb-6">
-          I enjoy taking <a href="https://www.instagram.com/harangju/" className="link">photos</a>. As my faith, I affirm the <a href="https://www.ccel.org/creeds/nicene.creed.html" className="link">Nicene Creed</a>.
+          Outside of work, I enjoy taking <a href="https://www.instagram.com/harangju/" className="link">photos</a>. As my faith, I affirm the <a href="https://www.ccel.org/creeds/nicene.creed.html" className="link">Nicene Creed</a>.
         </p>
       </div>
     </main>
