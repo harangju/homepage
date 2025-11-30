@@ -11,7 +11,7 @@ function Footer() {
           rel="noreferrer"
           aria-label="View resume"
         >
-          <FileText className="w-5 h-5" />
+          <FileText className="w-5 h-5 -mr-1" />
         </a>
         <a
           className="link-hover hover-scale-95"
