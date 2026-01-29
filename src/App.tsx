@@ -1,7 +1,6 @@
 import { FileText, GitHub, GraduationCap, Instagram, LinkedIn, X } from "./icons";
 import { useRouter } from "./Router";
 import { Post } from "./Post";
-import { PostsList } from "./PostsList";
 
 function Footer() {
   return (
@@ -86,7 +85,6 @@ function Home() {
           Outside of work, I enjoy taking <a href="https://www.instagram.com/harangju/" className="link">photos</a>, and I affirm the <a href="https://www.oca.org/orthodoxy/prayers/symbol-of-faith" className="link">Nicene Creed</a>.
         </p>
       </div>
-      <PostsList />
     </main>
   );
 }
