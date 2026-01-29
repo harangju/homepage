@@ -1,4 +1,7 @@
 import { FileText, GitHub, GraduationCap, Instagram, LinkedIn, X } from "./icons";
+import { useRouter } from "./Router";
+import { Post } from "./Post";
+import { PostsList } from "./PostsList";
 
 function Footer() {
   return (
@@ -83,11 +86,21 @@ function Home() {
           Outside of work, I enjoy taking <a href="https://www.instagram.com/harangju/" className="link">photos</a>, and I affirm the <a href="https://www.oca.org/orthodoxy/prayers/symbol-of-faith" className="link">Nicene Creed</a>.
         </p>
       </div>
+      <PostsList />
     </main>
   );
 }
 
 export default function App() {
+  const { path } = useRouter();
+
+  // Parse path to determine what to render
+  const slug = path === "/" ? null : path.slice(1);
+
+  if (slug) {
+    return <Post slug={slug} />;
+  }
+
   return (
     <div className="flex flex-col h-screen justify-between max-w-2xl mx-auto pt-6 px-4">
       <Home />
