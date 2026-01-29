@@ -1,20 +1,27 @@
 import { useEffect, useState } from "react";
 
+const NAVIGATE_EVENT = "navigate";
+
 export function useRouter() {
   const [path, setPath] = useState(window.location.pathname);
 
   useEffect(() => {
-    const handlePopState = () => {
+    const handleNavigation = () => {
       setPath(window.location.pathname);
     };
 
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
+    window.addEventListener("popstate", handleNavigation);
+    window.addEventListener(NAVIGATE_EVENT, handleNavigation);
+
+    return () => {
+      window.removeEventListener("popstate", handleNavigation);
+      window.removeEventListener(NAVIGATE_EVENT, handleNavigation);
+    };
   }, []);
 
   const navigate = (newPath: string) => {
     window.history.pushState({}, "", newPath);
-    setPath(newPath);
+    window.dispatchEvent(new Event(NAVIGATE_EVENT));
   };
 
   return { path, navigate };
