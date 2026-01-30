@@ -1,7 +1,6 @@
 import { readdirSync, readFileSync, writeFileSync, mkdirSync } from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import { marked } from "marked";
 
 interface PostMetadata {
   slug: string;
@@ -34,7 +33,7 @@ filenames.forEach(filename => {
   const { data, content } = matter(fileContents);
 
   // Convert markdown to HTML
-  const html = marked(content);
+  const html = Bun.markdown.html(content);
 
   // Create post object
   const post: Post = {
