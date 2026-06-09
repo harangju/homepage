@@ -29,10 +29,11 @@
   transition: color 140ms ease, border-color 140ms ease;
 }
 .side-nav a:hover { color: var(--ink-mute); text-decoration: none; }
+.side-nav a.nav-home { margin-bottom: 8px; }
 .side-nav a.is-active {
   color: var(--ink); border-left-color: var(--ink); font-weight: 600;
 }
-@media (max-width: 1180px) { .side-nav { display: none; } }
+@media (max-width: 1080px) { .side-nav { display: none; } }
 
 /* ---------- hero ---------- */
 .hero { padding: 92px 0 70px; text-align: center; }
