@@ -1,0 +1,60 @@
+/* ===========================================================
+   Shared base for paper pages under /static/<slug>/.
+   Palette, type tokens, resets, base elements. Matches the
+   homepage background (#f7f7f4). Link this BEFORE the page's
+   own styles.css so its layout can override.
+
+   Fonts load via a <link> in each page's <head> (see STYLE.md).
+   =========================================================== */
+
+:root {
+  --cream:   #f7f7f4;
+  --cream-2: #f0f0ec;
+  --cream-3: #e8e8e3;
+  --paper:   #ffffff;
+  --ink:     #1b1a17;
+  --ink-soft:#34322c;
+  --ink-mute:#6b6759;
+  --ink-dim: #94907f;
+  --rule:    #ddd8c9;
+  --rule-soft:#e8e4d8;
+
+  --mono:    #2e7d32;   /* monotonic / coordination-free  (green) */
+  --mono-soft:#cfe6d0;
+  --order:   #b8860b;   /* monotonic with ordering        (amber) */
+  --order-soft:#f0e2bf;
+  --nm:      #c0392b;   /* non-monotonic / coordination   (red)  */
+  --nm-soft: #f3d2cd;
+  --accent:  #3a3a8c;   /* chrome accent (indigo)               */
+
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --code:  'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+section, footer.cite { scroll-margin-top: 28px; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--mono-soft); color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>When Coordination Is Avoidable — A Monotonicity Analysis of Organizational Tasks</title>
+<meta name="description" content="A computable rule for when coordination is required for correctness: a task needs coordination only when new information can invalidate prior conclusions (non-monotonicity)." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="When Coordination Is Avoidable" />
+<meta property="og:description" content="Coordination is required for correctness only when new information can invalidate prior conclusions. 74% of enterprise workflows and 42% of occupational tasks are monotonic." />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="When Coordination Is Avoidable" />
+<meta name="twitter:description" content="A monotonicity analysis of organizational tasks." />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23f5f3ee'/%3E%3Cg fill='none' stroke='%231b1a17' stroke-width='2.4'%3E%3Ccircle cx='16' cy='20' r='4'/%3E%3Ccircle cx='16' cy='44' r='4'/%3E%3Ccircle cx='40' cy='32' r='4'/%3E%3Cline x1='20' y1='20' x2='36' y2='30'/%3E%3Cline x1='20' y1='44' x2='36' y2='34'/%3E%3C/g%3E%3Ccircle cx='52' cy='32' r='4' fill='%232e7d32'/%3E%3Cline x1='44' y1='32' x2='48' y2='32' stroke='%232e7d32' stroke-width='2.4'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/_shared/base.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ LEFT SIDE NAV ============ -->
+<aside class="side-nav" aria-label="Section navigation">
+  <ul>
+    <li><a href="#top" data-target="top">Top</a></li>
+    <li><a href="#idea" data-target="idea">The idea</a></li>
+    <li><a href="#explorer" data-target="explorer">Monotonicity</a></li>
+    <li><a href="#sim" data-target="sim">Simulation</a></li>
+    <li><a href="#evidence" data-target="evidence">Evidence</a></li>
+    <li><a href="#cite" data-target="cite">Cite</a></li>
+  </ul>
+</aside>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1 class="hero-title">When Coordination<br/>Is <span class="ital">Avoidable</span></h1>
+    <p class="hero-sub">A monotonicity analysis of organizational tasks</p>
+    <p class="byline"><a href="mailto:harang@jhu.edu">Harang Ju</a></p>
+    <div class="chips">
+      <a class="chip" href="https://arxiv.org/abs/2602.18673" target="_blank" rel="noopener">Paper<span class="arr">↗</span></a>
+    </div>
+
+    <figure class="hero-fig">
+      <svg id="heroSvg" viewBox="0 0 720 280" role="img" aria-label="Animation: conclusions accumulate left to right. While each step only adds, the task stays monotonic and needs no coordination. When a later step reaches back and invalidates an earlier conclusion, the task turns non-monotonic and coordination becomes required."></svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ THE IDEA ============ -->
+<section id="idea" class="band">
+  <div class="wrap narrow">
+    <h2 class="sec-num">01 — The idea</h2>
+    <p class="lead">Meetings, approvals, status updates, reviews. Organizations coordinate by default.</p>
+    <p class="lead">But there's no formal rule for when coordination is actually required.</p>
+    <p>Distributed systems theory has a rule, and it maps straight onto organizations. The same test that says when concurrent processes need to coordinate says when people and teams do.</p>
+    <p>A task is <strong>monotonic</strong> when every step only adds to the result and never takes anything back. A monotonic task runs correctly with no coordination at all. It turns <strong>non-monotonic</strong> the moment new information can invalidate a conclusion that was already valid.</p>
+    <p class="aside">The key question is: <strong>Can new work validate old conclusions?</strong> If no, coordination is optional. If yes, it is required.</p>
+  </div>
+</section>
+
+<!-- ============ MONOTONICITY EXPLORER ============ -->
+<section id="explorer" class="band alt">
+  <div class="wrap">
+    <h2 class="sec-num">02 — What makes a task non-monotonic</h2>
+    <p class="lead narrow">Pick a task structure and a feedback type.</p>
+
+    <div class="explorer">
+      <div class="ex-controls">
+        <div class="ctl-group" role="group" aria-label="Task structure">
+          <span class="ctl-label">Structure</span>
+          <button class="seg is-on" data-struct="pooled">Pooled</button>
+          <button class="seg" data-struct="sequential">Sequential</button>
+          <button class="seg" data-struct="reciprocal">Reciprocal</button>
+        </div>
+        <div class="ctl-group" role="group" aria-label="Feedback type" id="fbGroup">
+          <span class="ctl-label">Feedback</span>
+          <button class="seg is-on" data-fb="additive">Additive</button>
+          <button class="seg" data-fb="retractive">Retractive</button>
+        </div>
+        <p class="ctl-note" id="exNote"></p>
+      </div>
+
+      <div class="ex-stage">
+        <svg id="exSvg" viewBox="0 0 420 260" role="img" aria-label="Diagram of the selected task structure"></svg>
+        <div class="verdict" id="exVerdict">
+          <span class="v-tag" id="vTag">Monotonic</span>
+          <span class="v-sub" id="vSub">coordination-free</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIMULATION ============ -->
+<section id="sim" class="band">
+  <div class="wrap">
+    <h2 class="sec-num">03 — Watch it happen</h2>
+    <p class="lead narrow">A multi-agent simulation puts the rule to the test.</p>
+
+    <div class="sim">
+      <div class="sim-bar">
+        <div class="ctl-group" role="group" aria-label="Task">
+          <span class="ctl-label">Task</span>
+          <button class="seg is-on" data-task="budget">Budget allocation <em>(NM)</em></button>
+          <button class="seg" data-task="strategy">Strategy pillars <em>(M)</em></button>
+        </div>
+        <div class="cond-grid" role="group" aria-label="Coordination condition">
+          <span class="ctl-label">Condition</span>
+          <span class="ctl-label exp-h">Expected</span>
+          <button class="big-seg is-on" data-cond="uncoordinated">Uncoordinated</button>
+          <span class="bs-pred" data-cond="uncoordinated"></span>
+          <button class="big-seg" data-cond="coordinated">Coordinated</button>
+          <span class="bs-pred" data-cond="coordinated"></span>
+        </div>
+      </div>
+
+      <figure class="sim-stage">
+        <svg id="simSvg" viewBox="0 0 720 360" role="img" aria-label="Animated multi-agent simulation"></svg>
+        <figcaption id="simVerdict" class="sim-verdict"></figcaption>
+        <button id="simReplay" class="replay">Replay ↻</button>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVIDENCE ============ -->
+<section id="evidence" class="band alt">
+  <div class="wrap">
+    <h2 class="sec-num">04 — How common is monotonicity</h2>
+    <div class="chart-toggle" role="group" aria-label="Corpus">
+      <button class="seg-pill is-on" data-corpus="apqc">Enterprise workflows <em>APQC</em></button>
+      <button class="seg-pill" data-corpus="onet">Occupations <em>O*NET</em></button>
+    </div>
+    <div class="stats">
+      <div class="stat" data-corpus="apqc"><span class="stat-val"><span class="stat-num" data-to="74">0</span><span class="stat-unit">%</span></span><span class="stat-lab">of 65 enterprise workflows (APQC) are monotonic</span></div>
+      <div class="stat" data-corpus="onet"><span class="stat-val"><span class="stat-num" data-to="42">0</span><span class="stat-unit">%</span></span><span class="stat-lab">of 13,417 occupational tasks (O*NET) are monotonic</span></div>
+    </div>
+    <figure class="chart-fig">
+      <svg id="barSvg" viewBox="0 0 720 380" role="img" aria-label="Bar chart of monotonicity prevalence"></svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CITE ============ -->
+<footer id="cite" class="cite">
+  <div class="wrap narrow">
+    <h2 class="sec-num">05 — Citation</h2>
+    <pre class="bib" id="bib">@misc{ju2026coordination,
+      title={When Coordination Is Avoidable: A Monotonicity Analysis of Organizational Tasks}, 
+      author={Harang Ju},
+      year={2026},
+      eprint={2602.18673},
+      archivePrefix={arXiv},
+      primaryClass={cs.MA},
+      url={https://arxiv.org/abs/2602.18673}, 
+}</pre>
+    <button class="copy" id="copyBib">Copy</button>
+    <p class="foot-note">Coordination · monotonicity · organizational theory · multi-agent systems</p>
+  </div>
+</footer>
+
+<div id="tooltip" class="tooltip" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>

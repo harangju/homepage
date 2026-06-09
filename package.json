@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "bun --hot src/index.html",
-    "build": "rm -rf build && bun run build:posts && bun build src/index.html --outdir build --minify --target browser --define.process.env.NODE_ENV=production",
+    "build": "rm -rf build && bun run build:posts && bun build src/index.html --outdir build --minify --target browser --define.process.env.NODE_ENV=production && cp -R static/. build/",
     "build:posts": "bun run scripts/build-posts.ts",
     "serve": "bun run scripts/serve.ts",
     "deploy": "bun run build && firebase deploy --only hosting"

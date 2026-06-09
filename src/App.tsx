@@ -78,6 +78,10 @@ function Home() {
         </p>
 
         <p className="mb-6">
+          I study and build agentic AI systems inside organizations. Recent work asks <a href="/coordination/" className="link">when coordination is avoidable</a> and <a href="https://www.pnas.org/doi/10.1073/pnas.2521774123" className="link">how AI agents negotiate at scale</a>.
+        </p>
+
+        <p className="mb-6">
           Previously, I was a postdoc at <a href="https://ide.mit.edu" className="link">MIT</a> and received my PhD from <a href="https://www.upenn.edu/" className="link">UPenn</a>.
         </p>
 
