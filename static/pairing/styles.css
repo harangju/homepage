@@ -1,0 +1,207 @@
+/* ===========================================================
+   Personality Pairing in Human-AI Teams — landing page
+   Page-specific styles. Tokens, resets, and base elements
+   come from /_shared/base.css (linked first in the <head>).
+
+   Color meaning on this page:
+     --mono  (green)  pairing raises ad quality
+     --nm    (red)    pairing lowers ad quality
+     --accent(indigo) field click-through result
+     --rule  (gray)   not individually significant
+   =========================================================== */
+
+/* ---------- layout ---------- */
+.wrap { max-width: 820px; margin: 0 auto; padding: 0 28px; }
+.wrap.narrow { max-width: 660px; }
+.narrow { max-width: 660px; }
+
+.band { padding: 78px 0; border-top: 1px solid var(--rule-soft); }
+.band.alt { background: var(--cream-2); }
+
+/* ---------- side nav ---------- */
+.side-nav { position: fixed; top: 50%; left: 22px; transform: translateY(-50%); z-index: 50; }
+.side-nav ul {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--rule);
+}
+.side-nav a {
+  display: block; padding: 4px 12px; margin-left: -1px;
+  font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--ink-dim); border-left: 2px solid transparent;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+.side-nav a:hover { color: var(--ink-mute); text-decoration: none; }
+.side-nav a.nav-home { margin-bottom: 8px; }
+.side-nav a.is-active { color: var(--ink); border-left-color: var(--ink); font-weight: 600; }
+@media (max-width: 1080px) { .side-nav { display: none; } }
+
+/* ---------- hero ---------- */
+.hero { padding: 92px 0 70px; text-align: center; }
+.hero-title {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(34px, 5.5vw, 58px); line-height: 1.05;
+  letter-spacing: -0.02em; margin: 0 0 18px;
+}
+.hero-title .ital { font-style: italic; font-weight: 400; color: var(--accent); }
+.hero-sub {
+  font-family: var(--serif); font-size: clamp(18px, 2.6vw, 24px);
+  color: var(--ink-soft); margin: 0 auto 18px; font-weight: 400; max-width: 620px;
+}
+.byline { font-size: 16px; margin: 0 0 26px; color: var(--ink-mute); }
+.chips { display: flex; gap: 12px; justify-content: center; margin: 0 0 54px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 18px; border: 1px solid var(--ink);
+  border-radius: 999px; color: var(--ink); font-size: 14px; font-weight: 600;
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.chip:hover { transform: translateY(-1px); background: var(--ink); color: var(--cream); text-decoration: none; }
+.chip .arr { font-size: 12px; }
+
+/* ---------- hero figure ---------- */
+.hero-fig { margin: 0; }
+#heroSvg {
+  width: 100%; max-width: 720px; height: auto; display: block; margin: 0 auto;
+  background: var(--paper); border: 1px solid var(--rule);
+  border-radius: 14px; box-shadow: 0 1px 0 var(--rule-soft);
+}
+
+/* ---------- legend ---------- */
+.legend {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  margin: 16px 0 0; font-size: 13px; color: var(--ink-mute);
+}
+.legend .lg { display: inline-flex; align-items: center; gap: 7px; }
+.legend .sw { width: 13px; height: 13px; border-radius: 4px; display: inline-block; }
+.sw.pos { background: var(--mono); }
+.sw.neg { background: var(--nm); }
+.sw.mixed { background: var(--order); }
+.sw.field { background: var(--mono); position: relative; }
+.sw.field::after {
+  content: '★'; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 9px; line-height: 1;
+}
+.sw.nul { background: var(--cream-3); border: 1px solid var(--rule); }
+
+/* ---------- typography in bands ---------- */
+.sec-num {
+  font-family: var(--code); font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-dim); font-weight: 500; margin: 0 0 26px;
+}
+.lead {
+  font-family: var(--serif); font-size: clamp(20px, 2.8vw, 26px);
+  line-height: 1.42; color: var(--ink); margin: 0 0 22px; font-weight: 400;
+}
+.hint { font-family: var(--code); font-size: 13px; line-height: 1.5; color: var(--ink-mute); margin: 0; max-width: 560px; }
+.band p { margin: 0 0 18px; color: var(--ink-soft); }
+.band p.aside {
+  border-left: 3px solid var(--nm); padding: 4px 0 4px 18px;
+  color: var(--ink); font-size: 17px; margin-top: 26px;
+}
+strong { font-weight: 600; color: var(--ink); }
+em { font-style: italic; }
+
+/* ---------- shared matrix svg ---------- */
+.mx-stage {
+  margin: 0; background: var(--paper); border: 1px solid var(--rule);
+  border-radius: 14px; padding: 14px; position: relative;
+}
+#heroMatrix { width: 100%; height: auto; display: block; }
+.mx-cell { cursor: pointer; transition: opacity .15s ease; }
+.mx-cell:hover { opacity: 0.82; }
+
+/* ---------- pairing explorer ---------- */
+.explorer {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px;
+  margin-top: 36px; align-items: start;
+}
+.pair-detail {
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 14px;
+  padding: 22px; min-height: 360px;
+}
+.pd-title { display: block; font-family: var(--serif); font-size: 21px; font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 18px; }
+
+/* mini coefficient plot (real values from SI Table, ad_quality_itx) */
+.pd-coefs { margin: 0 0 8px; border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); padding: 12px 0; }
+.coef-key { font-family: var(--code); font-size: 10.5px; color: var(--ink-dim); margin: 0 0 18px; }
+.coef-row { display: grid; grid-template-columns: 42px 1fr 64px; align-items: center; gap: 10px; height: 26px; }
+.coef-dim { font-family: var(--code); font-size: 11px; color: var(--ink-mute); }
+.coef-track { position: relative; height: 14px; }
+.coef-track::before { content: ''; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--rule); }
+.coef-bar { position: absolute; top: 3px; height: 8px; width: 0; border-radius: 3px; transition: width .5s cubic-bezier(.4,0,.2,1); }
+.coef-bar.pos { background: var(--mono); }
+.coef-bar.neg { background: var(--nm); }
+.coef-bar.dim { opacity: 0.34; }
+.coef-val { font-family: var(--code); font-size: 12px; text-align: right; color: var(--ink-soft); }
+.coef-val .star { color: var(--ink-dim); }
+.pd-chat-lab {
+  font-family: var(--code); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-dim); margin-bottom: 12px;
+}
+.pd-chat-lab .il {
+  font-size: 9.5px; letter-spacing: 0.02em; text-transform: none; color: var(--ink-mute);
+  background: var(--cream-3); padding: 2px 6px; border-radius: 5px; margin-left: 6px;
+}
+.pd-cap { font-size: 13px; color: var(--ink-mute); font-style: italic; margin: 14px 0 0; opacity: 0; transition: opacity .4s ease; }
+.pd-cap.show { opacity: 1; }
+
+/* ---------- chat bubbles ---------- */
+.chat { display: flex; flex-direction: column; gap: 8px; min-height: 176px; }
+.bubble {
+  max-width: 84%; padding: 9px 13px; border-radius: 14px; font-size: 14px; line-height: 1.4;
+  animation: pop .4s cubic-bezier(.22,.61,.36,1) both; will-change: transform, opacity;
+}
+.bubble .who { font-family: var(--code); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; display: block; margin-bottom: 2px; }
+.bubble.h  { align-self: flex-end; background: var(--ink); color: var(--cream); border-bottom-right-radius: 5px; }
+.bubble.ai { align-self: flex-start; background: var(--cream-2); color: var(--ink); border: 1px solid var(--rule-soft); border-bottom-left-radius: 5px; }
+@keyframes pop { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 760px) { .explorer { grid-template-columns: 1fr; } }
+
+/* ---------- evidence ---------- */
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 48px; max-width: 640px; margin: 8px 0 40px; }
+.stat { display: flex; flex-direction: column; }
+.stat-val { display: flex; align-items: baseline; }
+.stat-num { font-family: var(--serif); font-size: clamp(44px, 7vw, 66px); font-weight: 500; line-height: 1; color: var(--accent); }
+.stat-unit { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); color: var(--accent); margin-left: 2px; }
+.stat-lab { font-size: 14px; color: var(--ink-mute); margin-top: 10px; max-width: 280px; }
+
+/* ---------- lab-to-field figure ---------- */
+.field-fig { margin: 8px 0 0; }
+#fieldFig {
+  width: 100%; max-width: 720px; height: auto; display: block;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 8px;
+}
+.ff-cap { font-size: 14px; color: var(--ink-mute); line-height: 1.55; margin: 14px 0 0; max-width: 640px; }
+.ff-cap strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- cite ---------- */
+.cite { padding: 70px 0 90px; border-top: 1px solid var(--rule); background: var(--cream-2); position: relative; }
+.bib {
+  font-family: var(--code); font-size: 13px; line-height: 1.6;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 10px;
+  padding: 18px 20px; overflow-x: auto; color: var(--ink-soft); margin: 0;
+}
+.copy {
+  margin-top: 12px; padding: 7px 16px; border: 1px solid var(--ink);
+  background: transparent; border-radius: 7px; font-family: var(--sans);
+  font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.copy:hover { background: var(--ink); color: var(--cream); }
+.copy.done { background: var(--mono); border-color: var(--mono); color: #fff; }
+.foot-note {
+  font-family: var(--code); font-size: 11px; letter-spacing: 0.06em;
+  color: var(--ink-dim); margin-top: 36px; text-transform: lowercase;
+}
+
+/* ---------- tooltip ---------- */
+.tooltip {
+  position: fixed; pointer-events: none; z-index: 100;
+  transform: translate(-50%, -130%); opacity: 0;
+  background: var(--ink); color: var(--cream); font-size: 12px;
+  font-family: var(--sans); padding: 6px 10px; border-radius: 7px;
+  white-space: nowrap; transition: opacity 0.12s ease;
+}
+.tooltip.show { opacity: 1; }

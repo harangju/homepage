@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Personality Pairing Improves Human-AI Collaboration</title>
+<meta name="description" content="A large-scale randomized experiment pairing 1,258 people with AI agents prompted to vary on the Big Five. Which human-AI personality pairings help, and which hurt." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Personality Pairing Improves Human-AI Collaboration" />
+<meta property="og:description" content="Some human-AI personality pairings raise ad quality, some lower it. Extraverted humans with conscientious AI produced the lowest-quality ads. Neurotic-neurotic teams won on real-world click-through." />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Personality Pairing Improves Human-AI Collaboration" />
+<meta name="twitter:description" content="Which human-AI personality pairings help, and which hurt." />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23f5f3ee'/%3E%3Cg%3E%3Crect x='14' y='14' width='13' height='13' rx='2.5' fill='%232e7d32'/%3E%3Crect x='37' y='14' width='13' height='13' rx='2.5' fill='%23ddd8c9'/%3E%3Crect x='14' y='37' width='13' height='13' rx='2.5' fill='%23ddd8c9'/%3E%3Crect x='37' y='37' width='13' height='13' rx='2.5' fill='%23c0392b'/%3E%3C/g%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/_shared/base.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ LEFT SIDE NAV ============ -->
+<aside class="side-nav" aria-label="Section navigation">
+  <ul>
+    <li><a class="nav-home" href="/">← Home</a></li>
+    <li><a href="#top" data-target="top">Top</a></li>
+    <li><a href="#idea" data-target="idea">The idea</a></li>
+    <li><a href="#evidence" data-target="evidence">Experiments</a></li>
+    <li><a href="#explorer" data-target="explorer">Pairings</a></li>
+    <li><a href="#field" data-target="field">Lab → field</a></li>
+    <li><a href="#cite" data-target="cite">Cite</a></li>
+  </ul>
+</aside>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1 class="hero-title">Personality <span class="ital">Pairing</span><br/>in Human-AI Teams</h1>
+    <p class="hero-sub">How human and AI personalities combine to shape collaborative outcomes in the lab and in the real world</p>
+    <p class="byline"><a href="/">Harang Ju</a> · <a href="https://sinanaral.io/" target="_blank" rel="noopener">Sinan Aral</a></p>
+    <div class="chips">
+      <a class="chip" href="https://arxiv.org/abs/2511.13979" target="_blank" rel="noopener">Paper<span class="arr">↗</span></a>
+    </div>
+
+    <figure class="hero-fig">
+      <svg id="heroSvg" viewBox="0 0 720 300" role="img" aria-label="Animation: a human personality and an AI personality combine into an outcome. Some pairings raise ad quality, some lower it, one wins on real-world click-through, and one is mixed. The same pairing determines the result."></svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ THE IDEA ============ -->
+<section id="idea" class="band">
+  <div class="wrap narrow">
+    <h2 class="sec-num">01 — The idea</h2>
+    <p class="lead">An AI agent's personality is just a prompt away. We randomized it to ask which pairings work.</p>
+    <p>Each person built real display ads with an AI agent prompted to be high or low on each of the <strong>Big Five</strong> traits. Because we <em>randomized</em> the agent's personality, the differences across pairings are causal. The same pairing reliably produces the same result.</p>
+  </div>
+</section>
+
+<!-- ============ THE EXPERIMENTS ============ -->
+<section id="evidence" class="band alt">
+  <div class="wrap">
+    <h2 class="sec-num">02 — The experiments</h2>
+    <p class="lead">A lab study of ad quality, then a field test of the same ads on X.</p>
+    <div class="stats">
+      <div class="stat"><span class="stat-val"><span class="stat-num" data-to="1258">0</span></span><span class="stat-lab">participants paired with AI agents</span></div>
+      <div class="stat"><span class="stat-val"><span class="stat-num" data-to="7266">0</span></span><span class="stat-lab">display ads produced together</span></div>
+      <div class="stat"><span class="stat-val"><span class="stat-num" data-to="1995">0</span></span><span class="stat-lab">independent human raters of ad quality</span></div>
+      <div class="stat"><span class="stat-val"><span class="stat-num" data-to="4.9">0</span><span class="stat-unit">M</span></span><span class="stat-lab">impressions in the field experiment on X</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAIRING EXPLORER ============ -->
+<section id="explorer" class="band">
+  <div class="wrap">
+    <h2 class="sec-num">03 — Pick a pairing</h2>
+    <p class="hint">Every cell is one human-AI personality pairing, colored by its effect on ad quality. Human trait down the side, AI trait across the top.</p>
+
+    <div class="explorer">
+      <figure class="mx-stage">
+        <svg id="heroMatrix" viewBox="0 0 470 460" role="img" aria-label="Interactive 5 by 5 matrix of human personality traits against AI personality traits, colored by each pairing's effect on ad quality. Select a cell to see its measured effects and a sample of how the team talked."></svg>
+        <div class="legend">
+          <span class="lg"><i class="sw pos"></i>improves quality</span>
+          <span class="lg"><i class="sw neg"></i>worsens quality</span>
+          <span class="lg"><i class="sw mixed"></i>mixed</span>
+          <span class="lg"><i class="sw field"></i>improves field CTR directly</span>
+          <span class="lg"><i class="sw nul"></i>n.s.</span>
+        </div>
+      </figure>
+
+      <div class="pair-detail" id="pairDetail">
+        <span class="pd-title" id="pairTitle"></span>
+        <div class="pd-coefs" id="pairCoefs"></div>
+        <p class="coef-key">† p&lt;.1&nbsp; * p&lt;.05&nbsp; ** p&lt;.01&nbsp; *** p&lt;.001</p>
+        <div class="pd-chat-lab">how the team tended to talk <span class="il">illustrative</span></div>
+        <div class="chat" id="pairChat"></div>
+        <p class="pd-cap" id="pairCap"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAB PREDICTS FIELD ============ -->
+<section id="field" class="band alt">
+  <div class="wrap">
+    <h2 class="sec-num">04 — Lab predicts field</h2>
+    <p class="lead">The lab ratings predicted what happened in the field.</p>
+    <figure class="field-fig">
+      <svg id="fieldFig" viewBox="0 0 720 300" role="img" aria-label="A one standard-deviation increase in human-rated ad text quality predicted a 5.9 percent higher click-through rate, and the same increase in image quality predicted a 31 cent (4.2 percent) lower cost per click."></svg>
+      <figcaption class="ff-cap">A one standard-deviation gain in human-rated ad quality moved real-world performance. Better <strong>text</strong> raised click-through by 5.9%, and better <strong>images</strong> cut cost-per-click by $0.31.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CITE ============ -->
+<footer id="cite" class="cite">
+  <div class="wrap narrow">
+    <h2 class="sec-num">05 — Citation</h2>
+    <pre class="bib" id="bib">@article{ju2025pairing,
+  title         = {Personality Pairing Improves Human-AI Collaboration},
+  author        = {Ju, Harang and Aral, Sinan},
+  year          = {2025},
+  eprint        = {2511.13979},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2511.13979},
+}</pre>
+    <button class="copy" id="copyBib">Copy</button>
+    <p class="foot-note">human-ai collaboration · personality · big five · field experiment</p>
+  </div>
+</footer>
+
+<div id="tooltip" class="tooltip" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>

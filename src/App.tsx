@@ -78,7 +78,7 @@ function Home() {
         </p>
 
         <p className="mb-6">
-          I study and build agentic AI systems inside organizations. Recent work asks <a href="/coordination/" className="link">when coordination is avoidable</a> and <a href="https://www.pnas.org/doi/10.1073/pnas.2521774123" className="link">how AI agents negotiate at scale</a>.
+          My recent research asks <a href="/coordination/" className="link">when coordination is avoidable</a>, <a href="/pairing/" className="link">how personality pairing shapes human-AI teams</a>, and <a href="https://www.pnas.org/doi/10.1073/pnas.2521774123" className="link" target="_blank" rel="noreferrer">how agents negotiate at scale</a>.
         </p>
 
         <p className="mb-6">
