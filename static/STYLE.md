@@ -61,7 +61,7 @@ Every page needs the font `<link>` and the two stylesheet links, in order:
 
 ## Writing voice
 
-Same as the papers (`paper/STYLE.md` in the research repo):
+Same as the papers. Full rules in `STYLE.md` at the Work repo root; summary:
 
 - No em dashes. Use a comma, period, or parentheses.
 - No explanatory colons in prose. Split into two sentences.
