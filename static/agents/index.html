@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>What Changes When Your Teammate Is an AI Agent</title>
+<meta name="description" content="One large field experiment: 2,234 people paired with human or AI partners produced 11,024 ads for a real think tank. AI teams were faster and wrote better text, human teams made better images, and AI outputs grew more alike." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="What Changes When Your Teammate Is an AI Agent" />
+<meta property="og:description" content="2,234 people, human or AI partners, 11,024 ads, ~5M impressions on X. A jagged frontier, a diversity collapse, and three teamwork mechanisms behind them." />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What Changes When Your Teammate Is an AI Agent" />
+<meta name="twitter:description" content="A large field experiment on human-AI collaboration." />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23f5f3ee'/%3E%3Cg%3E%3Crect x='14' y='14' width='13' height='13' rx='2.5' fill='%232e7d32'/%3E%3Crect x='37' y='14' width='13' height='13' rx='2.5' fill='%23ddd8c9'/%3E%3Crect x='14' y='37' width='13' height='13' rx='2.5' fill='%23ddd8c9'/%3E%3Crect x='37' y='37' width='13' height='13' rx='2.5' fill='%23c0392b'/%3E%3C/g%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/_shared/base.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ LEFT SIDE NAV ============ -->
+<aside class="side-nav" aria-label="Section navigation">
+  <ul>
+    <li><a class="nav-home" href="/">← Home</a></li>
+    <li><a href="#top" data-target="top">Top</a></li>
+    <li><a href="#setup" data-target="setup">The experiment</a></li>
+    <li><a href="#frontier" data-target="frontier">Jagged frontier</a></li>
+    <li><a href="#diversity" data-target="diversity">Diversity collapse</a></li>
+    <li><a href="#field" data-target="field">Lab → field</a></li>
+    <li><a href="#teamwork" data-target="teamwork">Why: teamwork</a></li>
+    <li><a href="#personality" data-target="personality">Personality</a></li>
+    <li><a href="#cite" data-target="cite">Cite</a></li>
+  </ul>
+</aside>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1 class="hero-title">Working with an <span class="ital">AI Agent</span></h1>
+    <p class="hero-sub">We randomly gave 2,234 people a human or an AI partner, then measured what changed</p>
+    <p class="byline"><a href="/">Harang Ju</a> · <a href="https://sinanaral.io/" target="_blank" rel="noopener">Sinan Aral</a></p>
+    <div class="chips">
+      <a class="chip" href="https://arxiv.org/abs/2503.18238" target="_blank" rel="noopener">Paper<span class="arr">↗</span></a>
+    </div>
+
+    <figure class="hero-fig">
+      <svg id="heroSvg" viewBox="0 0 720 300" role="img" aria-label="Animation: a human and an AI agent team up to produce an ad. The same task is graded on text and on image quality, with different results for human-AI and human-human teams."></svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ THE EXPERIMENT ============ -->
+<section id="setup" class="band">
+  <div class="wrap narrow">
+    <h2 class="sec-num">01 — The experiment</h2>
+    <p class="lead">Each person built real display ads for a think tank, on a platform we built called Pairit. We randomized whether the partner was a person or an AI agent.</p>
+    <p>Because the partner was randomized, every difference we measure is causal, not selection.</p>
+  </div>
+  <div class="wrap">
+    <figure class="fig-card">
+      <svg id="randomFig" viewBox="0 0 720 300" role="img" aria-label="2,234 people are randomly assigned to human-AI teams or human-human teams, which together produced 11,024 ads."></svg>
+      <p class="fig-cap">Random assignment is what makes the comparison causal. The two team types together produced <strong data-to="11024">0</strong> display ads.</p>
+    </figure>
+  </div>
+  <div class="wrap narrow">
+    <p class="connect">We graded every ad twice. Once with independent human raters, and once in the real world by running the ads as paid campaigns on <em>X</em>.</p>
+  </div>
+  <div class="wrap">
+    <figure class="fig-card">
+      <svg id="evalFig" viewBox="0 0 720 300" role="img" aria-label="Every ad was evaluated two ways: by 1,168 independent human raters, and in a field experiment on X with about 5 million impressions."></svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ JAGGED FRONTIER ============ -->
+<section id="frontier" class="band alt">
+  <div class="wrap narrow">
+    <h2 class="sec-num">02 — Faster, but uneven</h2>
+    <p class="lead">Human-AI teams made 50% more ads per worker. They wrote better text. But human-human teams made better images.</p>
+    <p>AI lifted one half of the task and not the other. This uneven help is the <strong>jagged frontier</strong>. Pick a measure below to see who came out ahead.</p>
+  </div>
+  <div class="wrap">
+    <figure class="fig-card">
+      <svg id="frontierFig" viewBox="0 0 720 300" role="img" aria-label="On productivity and text quality, human-AI teams scored higher. On image quality, human-human teams scored higher."></svg>
+      <div class="seg" id="frontierSeg" role="tablist" aria-label="Choose a measure">
+        <button class="seg-btn is-on" data-k="prod" role="tab">Productivity</button>
+        <button class="seg-btn" data-k="text" role="tab">Text quality</button>
+        <button class="seg-btn" data-k="image" role="tab">Image quality</button>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ DIVERSITY COLLAPSE ============ -->
+<section id="diversity" class="band">
+  <div class="wrap narrow">
+    <h2 class="sec-num">03 — Diversity collapse</h2>
+    <p class="lead">The ads from human-AI teams were more alike.</p>
+    <p>Each dot is one ad, placed by what it says. Ads from human-AI teams sit closer together, clustered near the average. Quality rose, but the range of ideas narrowed as more work flowed through the same model.</p>
+  </div>
+  <div class="wrap">
+    <figure class="fig-card">
+      <svg id="diversityFig" viewBox="0 0 720 340" role="img" aria-label="Two clouds of dots, each dot an ad. Human-AI ads cluster tightly around their center; human-human ads spread out more widely."></svg>
+      <p class="fig-cap">Human-AI ads sit closer to their own average than human-human ads do (&beta; = &minus;0.094, p &lt; .001). Tighter cloud, less variety.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ LAB PREDICTS FIELD ============ -->
+<section id="field" class="band alt">
+  <div class="wrap">
+    <h2 class="sec-num">04 — Lab predicts field</h2>
+    <p class="lead">The two strengths split the real-world payoff between the team types.</p>
+    <figure class="field-fig">
+      <svg id="fieldFig" viewBox="0 0 720 300" role="img" aria-label="A one standard-deviation gain in rated text quality raised click-through rate. The same gain in image quality cut cost-per-click by 29 cents."></svg>
+      <figcaption class="ff-cap">A one standard-deviation gain in human-rated quality moved real performance on <em>X</em>. Better <strong>text</strong> (the human-AI strength) won more clicks. Better <strong>images</strong> (the human-human strength) cut cost-per-click. The two effects roughly offset, so overall ad performance was similar across team types.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ WHY: TEAMWORK ============ -->
+<section id="teamwork" class="band">
+  <div class="wrap narrow">
+    <h2 class="sec-num">05 — Why: the teamwork changed</h2>
+    <p class="lead">The gains did not come from raw model skill. They came from three shifts in how teams worked.</p>
+  </div>
+  <div class="wrap">
+    <div class="mech-grid">
+
+      <div class="mech-card">
+        <h3 class="mech-h">1 — Task focus</h3>
+        <p class="mech-d">With an AI partner, talk shifted away from small talk and toward the work.</p>
+        <svg id="commFig" viewBox="0 0 360 156" role="img" aria-label="Human-AI teams sent 25 percent more task-oriented messages; human-human teams sent 18 percent more interpersonal messages."></svg>
+      </div>
+
+      <div class="mech-card">
+        <h3 class="mech-h">2 — Delegation</h3>
+        <p class="mech-d">People handed AI partners more of the work and made 62% fewer direct edits themselves.</p>
+        <svg id="delegFig" viewBox="0 0 360 156" role="img" aria-label="People delegated 50 percent of work to human partners and 58 percent to AI partners, a 17 percent increase."></svg>
+      </div>
+
+      <div class="mech-card wide">
+        <h3 class="mech-h">3 — Recognition, and how it pays off</h3>
+        <p class="mech-d">People who correctly realized their partner was an AI leaned further into both shifts. And delegating to AI helped exactly where AI was strong. It raised <strong>text</strong> and <strong>click</strong> ratings but did nothing for <strong>images</strong>, the same jagged frontier showing up in the mechanism.</p>
+        <svg id="delegQualFig" viewBox="0 0 600 132" role="img" aria-label="Delegation to AI improved text ratings and click ratings but had no significant effect on image ratings."></svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANION STUDY (pairing, linked out) ============ -->
+<section id="personality" class="band">
+  <div class="wrap narrow">
+    <h2 class="sec-num">06 — A companion study</h2>
+    <p class="lead">The AI's own personality matters too.</p>
+    <p>In a separate experiment we randomized each AI agent's Big Five personality. Some human-AI pairings raised ad quality, others lowered it, and the best pairing depended on the person. That work has its own page, with an interactive map of all 25 pairings.</p>
+
+    <a class="paper-link" href="/pairing/">
+      <span class="pl-tag">PNAS</span>
+      <span class="pl-title">Personality Pairing Improves Human-AI Collaboration</span>
+      <span class="pl-go">Explore the pairing map<span class="arr">→</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ CITE ============ -->
+<footer id="cite" class="cite">
+  <div class="wrap narrow">
+    <h2 class="sec-num">07 — Citation</h2>
+
+    <div class="cite-block">
+      <div class="cite-head">
+        <span class="cite-title">Collaborating with AI Agents</span>
+        <a class="chip ghost" href="https://arxiv.org/abs/2503.18238" target="_blank" rel="noopener">arXiv 2503.18238<span class="arr">↗</span></a>
+      </div>
+      <pre class="bib">@article{ju2025collaborating,
+  title         = {Collaborating with AI Agents: A Field Experiment on Teamwork, Productivity, and Performance},
+  author        = {Ju, Harang and Aral, Sinan},
+  year          = {2025},
+  eprint        = {2503.18238},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2503.18238},
+}</pre>
+      <button class="copy">Copy</button>
+    </div>
+
+    <div class="cite-block">
+      <div class="cite-head">
+        <span class="cite-title">Personality Pairing Improves Human-AI Collaboration</span>
+        <a class="chip ghost" href="https://arxiv.org/abs/2511.13979" target="_blank" rel="noopener">arXiv 2511.13979<span class="arr">↗</span></a>
+      </div>
+      <pre class="bib">@article{ju2025pairing,
+  title         = {Personality Pairing Improves Human-AI Collaboration},
+  author        = {Ju, Harang and Aral, Sinan},
+  year          = {2025},
+  eprint        = {2511.13979},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2511.13979},
+}</pre>
+      <button class="copy">Copy</button>
+    </div>
+
+    <p class="foot-note">human-ai collaboration · ai agents · productivity · field experiment</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
