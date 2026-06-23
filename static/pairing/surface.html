@@ -8,26 +8,34 @@
 <style>
   html, body { margin: 0; height: 100%; background: #0a0d18; color: #c9d2e8; overflow: hidden;
     font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-  canvas { display: block; width: 100vw; height: 100vh; cursor: grab; }
+  #wrap { height: 100vh; display: flex; align-items: center; justify-content: center; }
+  #stage { position: relative; height: 100vh; aspect-ratio: 1080 / 1446; overflow: hidden; }
+  canvas { display: block; width: 100%; height: 100%; cursor: grab; }
   canvas:active { cursor: grabbing; }
-  #ui { position: fixed; top: 20px; left: 22px; max-width: 340px; pointer-events: none; }
-  #ui h1 { font-size: 17px; margin: 0 0 6px; color: #eef; font-weight: 700; }
-  #ui p { margin: 0 0 14px; color: #8a93ad; font-size: 12.5px; }
+  #masthead { position: absolute; left: 7%; top: 5%; pointer-events: none; }
+  #masthead .logo { font-weight: 800; font-size: 4.2vh; letter-spacing: .04em; color: #fff; }
+  #masthead .bar { height: .9vh; width: 11vh; background: #d9a521; margin-top: .4vh; }
+  #footer { position: absolute; left: 0; right: 0; bottom: 1.6%; text-align: center;
+    color: #fff; font-weight: 600; font-size: 1.05vh; opacity: .85; pointer-events: none; }
+  #ui { position: fixed; top: 20px; right: 22px; width: 230px; pointer-events: none; }
   #ctl { display: flex; flex-direction: column; gap: 9px; pointer-events: auto; }
   select, button { background: #1c2238; color: #dbe3f7; border: 1px solid #2c3450; border-radius: 6px;
-    padding: 7px 9px; font-size: 12px; cursor: pointer; width: 230px; }
+    padding: 7px 9px; font-size: 12px; cursor: pointer; width: 100%; box-sizing: border-box; }
   button:hover { background: #252d49; }
-  label { color: #8a93ad; display: flex; align-items: center; gap: 8px; font-size: 12px; }
-  #hint { position: fixed; bottom: 16px; left: 22px; color: #5d6685; font-size: 11.5px; }
+  label { color: #aab3cc; display: flex; align-items: center; gap: 8px; font-size: 12px;
+    text-shadow: 0 1px 6px #0a0d18; }
+  #hint { position: fixed; bottom: 16px; right: 22px; color: #5d6685; font-size: 11.5px; }
 </style>
 </head>
 <body>
-<canvas id="c"></canvas>
+<div id="wrap">
+  <div id="stage">
+    <canvas id="c"></canvas>
+    <div id="masthead"><div class="logo">PNAS</div><div class="bar"></div></div>
+    <div id="footer">Proceedings of the National Academy of Sciences of the United States of America</div>
+  </div>
+</div>
 <div id="ui">
-  <h1>Pairing performance surface</h1>
-  <p>The measured 5&times;5 human&times;AI personality interaction effects on ad
-     quality, as a landscape. Gold peaks are pairings that help, magenta pits
-     hurt. The deepest pit is an extraverted human with a conscientious AI.</p>
   <div id="ctl">
     <select id="measure">
       <option value="comp">Composite (text + image + click)</option>
@@ -36,8 +44,8 @@
       <option value="c">Click-through</option>
     </select>
     <label><input type="checkbox" id="box" /> bounding box</label>
-    <label><input type="checkbox" id="labels" /> trait labels (O C E A N)</label>
-    <button id="save">Download PNG (2&times;)</button>
+    <label><input type="checkbox" id="labels" /> trait labels</label>
+    <button id="save">Download PNG (2×)</button>
   </div>
 </div>
 <div id="hint">drag to orbit &middot; scroll to zoom</div>
@@ -49,7 +57,8 @@
 import * as THREE from 'three';
 
 // ---- Real coefficients: SI Table tab:ad_quality_itx -----------------------
-// rows = human trait, cols = AI trait, both ordered O,C,E,A,N.
+// rows = human trait, cols = AI trait, both ordered O,C,E,A,N. Each cell holds
+// text / image / click coefficients (ordinal logit on individual ratings).
 const TRAITS = ['O','C','E','A','N'];
 const DATA = {
   O: { O:{t:0.147,i:-0.206,c:-0.084}, C:{t:0.302,i:0.111,c:0.141}, E:{t:-0.040,i:-0.094,c:-0.105}, A:{t:-0.303,i:0.273,c:0.106}, N:{t:-0.022,i:0.062,c:0.087} },
@@ -73,7 +82,7 @@ function cr(p0, p1, p2, p3, t) {
   return 0.5 * ((2*p1) + (-p0+p2)*t + (2*p0-5*p1+4*p2-p3)*t*t + (-p0+3*p1-3*p2+p3)*t*t*t);
 }
 function at(G, i, j) { i = Math.max(0, Math.min(4, i)); j = Math.max(0, Math.min(4, j)); return G[i][j]; }
-function sample(G, u, v) {
+function sample(G, u, v) {            // u,v in [0,4]
   const iu = Math.floor(u), fu = u - iu, iv = Math.floor(v), fv = v - iv;
   const col = [];
   for (let m = -1; m <= 2; m++)
@@ -81,25 +90,23 @@ function sample(G, u, v) {
   return cr(col[0], col[1], col[2], col[3], fv);
 }
 
+// ---- exact rendering from the local cover (data_surface.html) --------------
 const canvas = document.getElementById('c');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
 renderer.setClearColor(new THREE.Color('#0a0d18'), 1);
-const DPR = Math.min(window.devicePixelRatio || 1, 2);
-function resize() {
-  renderer.setPixelRatio(DPR);
-  renderer.setSize(window.innerWidth, window.innerHeight, false);
-  cam.aspect = window.innerWidth / window.innerHeight;
-  cam.updateProjectionMatrix();
-}
+const BASE_W = 1080, BASE_H = 1446, ASPECT = BASE_W / BASE_H;
+function sizeRenderer(s = 1) { renderer.setPixelRatio(1); renderer.setSize(BASE_W * s, BASE_H * s, false); }
+const DPR = Math.min(window.devicePixelRatio || 1, 4);
+sizeRenderer(DPR);
 
 const scene = new THREE.Scene();
-const cam = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+const cam = new THREE.PerspectiveCamera(34, ASPECT, 0.1, 100);
 const group = new THREE.Group();
 scene.add(group);
 
 const SPAN = 1.0, HSCALE = 0.95;
 
-const NU = 240, NV = 240, NP = NU * NV;
+const NU = 520, NV = 520, NP = NU * NV;
 const positions = new Float32Array(NP * 3);
 const aVal = new Float32Array(NP);
 const aJit = new Float32Array(NP);
@@ -133,6 +140,7 @@ function buildSurface(measure) {
 }
 
 const uniforms = {
+  uPix:     { value: renderer.getPixelRatio() },
   uMagenta: { value: new THREE.Color('#d6379b') },
   uCyan:    { value: new THREE.Color('#2bb6d9') },
   uGold:    { value: new THREE.Color('#f0c64a') },
@@ -140,14 +148,14 @@ const uniforms = {
 const mat = new THREE.ShaderMaterial({
   uniforms, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending,
   vertexShader: /* glsl */`
-    attribute float aVal; attribute float aJit;
+    uniform float uPix; attribute float aVal; attribute float aJit;
     varying float vVal; varying float vRand;
     void main() {
       vVal = aVal; vRand = aJit;
-      vec4 mv = modelViewMatrix * vec4(position, 1.0);
-      gl_Position = projectionMatrix * mv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       float mag = abs(aVal);
-      gl_PointSize = (1.6 + 4.4 * mag) * aJit * (11.0 / -mv.z);
+      float dist = -(modelViewMatrix * vec4(position,1.0)).z;
+      gl_PointSize = (0.55 + 1.5 * mag) * uPix * aJit * (11.0 / dist);
     }
   `,
   fragmentShader: /* glsl */`
@@ -155,13 +163,16 @@ const mat = new THREE.ShaderMaterial({
     varying float vVal; varying float vRand;
     uniform vec3 uMagenta; uniform vec3 uCyan; uniform vec3 uGold;
     void main() {
-      float a = smoothstep(0.5, 0.0, length(gl_PointCoord - 0.5));
+      vec2 pc = gl_PointCoord - 0.5;
+      float r = length(pc);
+      float a = step(r, 0.5);
+      float core = step(r, 0.32);
       float mag = abs(vVal);
       vec3 hue = vVal >= 0.0 ? uGold : uMagenta;
       float b = 0.55 + 0.85 * mag;
       vec3 col = mix(uCyan * 0.6, hue, clamp(mag * 1.5, 0.0, 1.0)) * b;
       col *= (0.8 + 0.4 * vRand);
-      col += vec3(1.0) * pow(mag, 2.0) * 0.55;
+      col += vec3(1.0) * core * (0.20 + 0.40 * mag);
       gl_FragColor = vec4(col, a);
     }
   `,
@@ -224,7 +235,7 @@ window.addEventListener('pointerup', () => { drag = false; });
 window.addEventListener('pointermove', (e) => {
   if (!drag) return;
   az -= (e.clientX - lx) * 0.006; lx = e.clientX;
-  el = Math.max(0.12, Math.min(1.4, el + (e.clientY - ly) * 0.005)); ly = e.clientY;
+  el = Math.max(0.06, Math.min(1.45, el + (e.clientY - ly) * 0.005)); ly = e.clientY;
 });
 canvas.addEventListener('wheel', (e) => {
   e.preventDefault();
@@ -232,22 +243,21 @@ canvas.addEventListener('wheel', (e) => {
 }, { passive: false });
 
 buildSurface('comp');
-resize();
-window.addEventListener('resize', resize);
-renderer.setAnimationLoop(() => { placeCam(); renderer.render(scene, cam); });
+function render() {
+  uniforms.uPix.value = renderer.getPixelRatio();
+  placeCam();
+  renderer.render(scene, cam);
+}
+renderer.setAnimationLoop(render);
 
 document.getElementById('measure').onchange = (e) => buildSurface(e.target.value);
 document.getElementById('box').onchange = (e) => { boxGroup.visible = e.target.checked; };
 document.getElementById('labels').onchange = (e) => { labelGroup.visible = e.target.checked; };
 document.getElementById('save').onclick = () => {
-  renderer.setPixelRatio(2);
-  renderer.setSize(window.innerWidth, window.innerHeight, false);
-  placeCam(); renderer.render(scene, cam);
-  const a = document.createElement('a');
-  a.href = renderer.domElement.toDataURL('image/png');
+  sizeRenderer(4); uniforms.uPix.value = renderer.getPixelRatio(); renderer.render(scene, cam);
+  const a = document.createElement('a'); a.href = renderer.domElement.toDataURL('image/png');
   a.download = 'pairing_surface.png'; a.click();
-  renderer.setPixelRatio(DPR);
-  renderer.setSize(window.innerWidth, window.innerHeight, false);
+  sizeRenderer(Math.min(window.devicePixelRatio || 1, 4));
 };
 </script>
 </body>
