@@ -112,7 +112,7 @@ const aVal = new Float32Array(NP);
 const aJit = new Float32Array(NP);
 const aNrm = new Float32Array(NP * 3);
 let s = 12345; const rnd = () => { s = (s*9301 + 49297) % 233280; return s/233280; };
-for (let i = 0; i < NP; i++) aJit[i] = 0.7 + rnd() * 0.8;
+for (let i = 0; i < NP; i++) aJit[i] = 0.92 + rnd() * 0.16;
 
 const geo = new THREE.BufferGeometry();
 geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -164,41 +164,46 @@ const uniforms = {
   uCyan:    { value: new THREE.Color('#2bb6d9') },
   uGold:    { value: new THREE.Color('#f0c64a') },
   uLight:   { value: new THREE.Vector3(0.55, 0.78, 0.32).normalize() },
+  uBg:      { value: new THREE.Color('#0a0d18') },
 };
 const mat = new THREE.ShaderMaterial({
-  uniforms, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending,
+  uniforms, transparent: true, depthTest: true, depthWrite: true, blending: THREE.NormalBlending,
   vertexShader: /* glsl */`
     uniform float uPix; attribute float aVal; attribute float aJit; attribute vec3 aNrm;
     uniform vec3 uLight;
-    varying float vVal; varying float vRand; varying float vLight;
+    varying float vVal; varying float vRand; varying float vLight; varying float vFog;
     void main() {
       vVal = aVal; vRand = aJit;
       vec3 N = normalize(aNrm);
       float diff = max(dot(N, uLight), 0.0);
-      vLight = 0.32 + 1.25 * pow(diff, 0.8);
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      vLight = 0.05 + 1.7 * pow(diff, 0.7);
+      vec4 mv = modelViewMatrix * vec4(position, 1.0);
+      float dist = -mv.z;
+      vFog = smoothstep(3.0, 7.5, dist);
+      gl_Position = projectionMatrix * mv;
       float mag = abs(aVal);
-      float dist = -(modelViewMatrix * vec4(position,1.0)).z;
       gl_PointSize = (0.55 + 1.5 * mag) * uPix * aJit * (11.0 / dist);
     }
   `,
   fragmentShader: /* glsl */`
     precision highp float;
-    varying float vVal; varying float vRand; varying float vLight;
-    uniform vec3 uMagenta; uniform vec3 uCyan; uniform vec3 uGold;
+    varying float vVal; varying float vRand; varying float vLight; varying float vFog;
+    uniform vec3 uMagenta; uniform vec3 uCyan; uniform vec3 uGold; uniform vec3 uBg;
     void main() {
       vec2 pc = gl_PointCoord - 0.5;
       float r = length(pc);
       float a = step(r, 0.5);
+      if (a < 0.5) discard;
       float core = step(r, 0.32);
       float mag = abs(vVal);
       vec3 hue = vVal >= 0.0 ? uGold : uMagenta;
       vec3 col = mix(uCyan * 0.45, hue, clamp(mag * 1.6, 0.0, 1.0));
-      col *= (0.7 + 1.0 * mag);
-      col *= (0.8 + 0.4 * vRand);
+      col *= (0.6 + 1.15 * mag);
+      col *= (0.97 + 0.06 * vRand);
       col *= vLight;
       col += vec3(1.0) * core * (0.40 + 0.6 * mag) * vLight;
       col *= 1.3;
+      col = mix(col, uBg, vFog * 0.75);
       gl_FragColor = vec4(col, a);
     }
   `,
@@ -280,7 +285,7 @@ document.getElementById('measure').onchange = (e) => buildSurface(e.target.value
 document.getElementById('box').onchange = (e) => { boxGroup.visible = e.target.checked; };
 document.getElementById('labels').onchange = (e) => { labelGroup.visible = e.target.checked; };
 document.getElementById('save').onclick = () => {
-  sizeRenderer(4); uniforms.uPix.value = renderer.getPixelRatio(); renderer.render(scene, cam);
+  sizeRenderer(4); uniforms.uPix.value = 4 / DPR; renderer.render(scene, cam);
   const a = document.createElement('a'); a.href = renderer.domElement.toDataURL('image/png');
   a.download = 'pairing_surface.png'; a.click();
   sizeRenderer(Math.min(window.devicePixelRatio || 1, 4));
