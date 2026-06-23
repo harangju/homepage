@@ -45,7 +45,7 @@
     </select>
     <label><input type="checkbox" id="box" /> bounding box</label>
     <label><input type="checkbox" id="labels" /> trait labels</label>
-    <button id="save">Download PNG (2×)</button>
+    <button id="save">Download (8.5×11 @300dpi)</button>
   </div>
 </div>
 <div id="hint">drag to orbit &middot; scroll to zoom</div>
@@ -285,9 +285,15 @@ document.getElementById('measure').onchange = (e) => buildSurface(e.target.value
 document.getElementById('box').onchange = (e) => { boxGroup.visible = e.target.checked; };
 document.getElementById('labels').onchange = (e) => { labelGroup.visible = e.target.checked; };
 document.getElementById('save').onclick = () => {
-  sizeRenderer(4); uniforms.uPix.value = 4 / DPR; renderer.render(scene, cam);
+  const W = 2550, H = 3300;                          // 8.5 x 11 in @ 300 DPI = 21.59 x 27.94 cm
+  const savedAspect = cam.aspect;
+  renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+  cam.aspect = W / H; cam.updateProjectionMatrix();
+  uniforms.uPix.value = (W / BASE_W) / DPR;          // keep dot size proportional to the larger frame
+  renderer.render(scene, cam);
   const a = document.createElement('a'); a.href = renderer.domElement.toDataURL('image/png');
-  a.download = 'pairing_surface.png'; a.click();
+  a.download = 'pairing_cover.png'; a.click();
+  cam.aspect = savedAspect; cam.updateProjectionMatrix();
   sizeRenderer(Math.min(window.devicePixelRatio || 1, 4));
 };
 </script>
