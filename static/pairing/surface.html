@@ -110,6 +110,7 @@ const NU = 520, NV = 520, NP = NU * NV;
 const positions = new Float32Array(NP * 3);
 const aVal = new Float32Array(NP);
 const aJit = new Float32Array(NP);
+const aNrm = new Float32Array(NP * 3);
 let s = 12345; const rnd = () => { s = (s*9301 + 49297) % 233280; return s/233280; };
 for (let i = 0; i < NP; i++) aJit[i] = 0.7 + rnd() * 0.8;
 
@@ -117,6 +118,7 @@ const geo = new THREE.BufferGeometry();
 geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 geo.setAttribute('aVal', new THREE.BufferAttribute(aVal, 1));
 geo.setAttribute('aJit', new THREE.BufferAttribute(aJit, 1));
+geo.setAttribute('aNrm', new THREE.BufferAttribute(aNrm, 3));
 
 function buildSurface(measure) {
   const G = gridFor(measure);
@@ -128,15 +130,32 @@ function buildSurface(measure) {
     for (let iv = 0; iv < NV; iv++) {
       const v = (iv / (NV - 1)) * 4;
       const val = sample(G, u, v);
+      const d = 0.02;
+      const hL = sample(G, u - d, v) / maxAbs * HSCALE * 0.5;
+      const hR = sample(G, u + d, v) / maxAbs * HSCALE * 0.5;
+      const hD = sample(G, u, v - d) / maxAbs * HSCALE * 0.5;
+      const hU = sample(G, u, v + d) / maxAbs * HSCALE * 0.5;
+      const dx = d * SPAN * 0.5, dz = d * SPAN * 0.5;
+      // tangents in world space
+      const tx = [2 * dx, hR - hL, 0];
+      const tv = [0, hU - hD, 2 * dz];
+      // normal = cross(tx, tv)
+      let nx = tx[1] * tv[2] - tx[2] * tv[1];
+      let ny = tx[2] * tv[0] - tx[0] * tv[2];
+      let nz = tx[0] * tv[1] - tx[1] * tv[0];
+      const nl = Math.hypot(nx, ny, nz) || 1;
+      if (ny < 0) { nx = -nx; ny = -ny; nz = -nz; }   // point up
       positions[p*3]   = (u / 4 - 0.5) * 2 * SPAN;
       positions[p*3+1] = (val / maxAbs) * HSCALE * 0.5;
       positions[p*3+2] = (v / 4 - 0.5) * 2 * SPAN;
       aVal[p] = val / maxAbs;
+      aNrm[p*3] = nx / nl; aNrm[p*3+1] = ny / nl; aNrm[p*3+2] = nz / nl;
       p++;
     }
   }
   geo.attributes.position.needsUpdate = true;
   geo.attributes.aVal.needsUpdate = true;
+  geo.attributes.aNrm.needsUpdate = true;
 }
 
 const uniforms = {
@@ -144,14 +163,19 @@ const uniforms = {
   uMagenta: { value: new THREE.Color('#d6379b') },
   uCyan:    { value: new THREE.Color('#2bb6d9') },
   uGold:    { value: new THREE.Color('#f0c64a') },
+  uLight:   { value: new THREE.Vector3(0.55, 0.78, 0.32).normalize() },
 };
 const mat = new THREE.ShaderMaterial({
   uniforms, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending,
   vertexShader: /* glsl */`
-    uniform float uPix; attribute float aVal; attribute float aJit;
-    varying float vVal; varying float vRand;
+    uniform float uPix; attribute float aVal; attribute float aJit; attribute vec3 aNrm;
+    uniform vec3 uLight;
+    varying float vVal; varying float vRand; varying float vLight;
     void main() {
       vVal = aVal; vRand = aJit;
+      vec3 N = normalize(aNrm);
+      float diff = max(dot(N, uLight), 0.0);
+      vLight = 0.32 + 1.25 * pow(diff, 0.8);
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       float mag = abs(aVal);
       float dist = -(modelViewMatrix * vec4(position,1.0)).z;
@@ -160,7 +184,7 @@ const mat = new THREE.ShaderMaterial({
   `,
   fragmentShader: /* glsl */`
     precision highp float;
-    varying float vVal; varying float vRand;
+    varying float vVal; varying float vRand; varying float vLight;
     uniform vec3 uMagenta; uniform vec3 uCyan; uniform vec3 uGold;
     void main() {
       vec2 pc = gl_PointCoord - 0.5;
@@ -169,10 +193,12 @@ const mat = new THREE.ShaderMaterial({
       float core = step(r, 0.32);
       float mag = abs(vVal);
       vec3 hue = vVal >= 0.0 ? uGold : uMagenta;
-      float b = 0.55 + 0.85 * mag;
-      vec3 col = mix(uCyan * 0.6, hue, clamp(mag * 1.5, 0.0, 1.0)) * b;
+      vec3 col = mix(uCyan * 0.45, hue, clamp(mag * 1.6, 0.0, 1.0));
+      col *= (0.7 + 1.0 * mag);
       col *= (0.8 + 0.4 * vRand);
-      col += vec3(1.0) * core * (0.20 + 0.40 * mag);
+      col *= vLight;
+      col += vec3(1.0) * core * (0.40 + 0.6 * mag) * vLight;
+      col *= 1.3;
       gl_FragColor = vec4(col, a);
     }
   `,
