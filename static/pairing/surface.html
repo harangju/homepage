@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Pairing performance surface</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0a0d18; color: #c9d2e8; overflow: hidden;
+    font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  canvas { display: block; width: 100vw; height: 100vh; cursor: grab; }
+  canvas:active { cursor: grabbing; }
+  #ui { position: fixed; top: 20px; left: 22px; max-width: 340px; pointer-events: none; }
+  #ui h1 { font-size: 17px; margin: 0 0 6px; color: #eef; font-weight: 700; }
+  #ui p { margin: 0 0 14px; color: #8a93ad; font-size: 12.5px; }
+  #ctl { display: flex; flex-direction: column; gap: 9px; pointer-events: auto; }
+  select, button { background: #1c2238; color: #dbe3f7; border: 1px solid #2c3450; border-radius: 6px;
+    padding: 7px 9px; font-size: 12px; cursor: pointer; width: 230px; }
+  button:hover { background: #252d49; }
+  label { color: #8a93ad; display: flex; align-items: center; gap: 8px; font-size: 12px; }
+  #hint { position: fixed; bottom: 16px; left: 22px; color: #5d6685; font-size: 11.5px; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="ui">
+  <h1>Pairing performance surface</h1>
+  <p>The measured 5&times;5 human&times;AI personality interaction effects on ad
+     quality, as a landscape. Gold peaks are pairings that help, magenta pits
+     hurt. The deepest pit is an extraverted human with a conscientious AI.</p>
+  <div id="ctl">
+    <select id="measure">
+      <option value="comp">Composite (text + image + click)</option>
+      <option value="t">Human-rated text quality</option>
+      <option value="i">Human-rated image quality</option>
+      <option value="c">Click-through</option>
+    </select>
+    <label><input type="checkbox" id="box" /> bounding box</label>
+    <label><input type="checkbox" id="labels" /> trait labels (O C E A N)</label>
+    <button id="save">Download PNG (2&times;)</button>
+  </div>
+</div>
+<div id="hint">drag to orbit &middot; scroll to zoom</div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+// ---- Real coefficients: SI Table tab:ad_quality_itx -----------------------
+// rows = human trait, cols = AI trait, both ordered O,C,E,A,N.
+const TRAITS = ['O','C','E','A','N'];
+const DATA = {
+  O: { O:{t:0.147,i:-0.206,c:-0.084}, C:{t:0.302,i:0.111,c:0.141}, E:{t:-0.040,i:-0.094,c:-0.105}, A:{t:-0.303,i:0.273,c:0.106}, N:{t:-0.022,i:0.062,c:0.087} },
+  C: { O:{t:-0.108,i:0.427,c:0.043}, C:{t:0.506,i:0.057,c:0.109}, E:{t:-0.124,i:-0.013,c:0.014}, A:{t:-0.594,i:-0.342,c:-0.337}, N:{t:0.206,i:0.067,c:0.142} },
+  E: { O:{t:0.195,i:0.271,c:0.266}, C:{t:-0.472,i:-0.518,c:-0.436}, E:{t:0.344,i:-0.097,c:0.139}, A:{t:0.112,i:-0.085,c:0.025}, N:{t:-0.241,i:0.114,c:-0.017} },
+  A: { O:{t:-0.030,i:-0.285,c:-0.176}, C:{t:0.074,i:-0.097,c:-0.015}, E:{t:-0.367,i:-0.076,c:-0.216}, A:{t:-0.022,i:0.058,c:0.051}, N:{t:0.264,i:-0.109,c:-0.107} },
+  N: { O:{t:0.037,i:0.066,c:-0.109}, C:{t:-0.143,i:-0.193,c:-0.262}, E:{t:0.157,i:0.086,c:0.181}, A:{t:0.015,i:-0.235,c:-0.084}, N:{t:-0.163,i:-0.138,c:-0.048} },
+};
+function gridFor(measure) {
+  const G = [];
+  for (let r = 0; r < 5; r++) { const row = [];
+    for (let cc = 0; cc < 5; cc++) {
+      const d = DATA[TRAITS[r]][TRAITS[cc]];
+      row.push(measure === 'comp' ? (d.t + d.i + d.c) / 3 : d[measure]);
+    } G.push(row);
+  } return G;
+}
+
+// ---- Catmull-Rom bicubic interpolation over the 5x5 grid -------------------
+function cr(p0, p1, p2, p3, t) {
+  return 0.5 * ((2*p1) + (-p0+p2)*t + (2*p0-5*p1+4*p2-p3)*t*t + (-p0+3*p1-3*p2+p3)*t*t*t);
+}
+function at(G, i, j) { i = Math.max(0, Math.min(4, i)); j = Math.max(0, Math.min(4, j)); return G[i][j]; }
+function sample(G, u, v) {
+  const iu = Math.floor(u), fu = u - iu, iv = Math.floor(v), fv = v - iv;
+  const col = [];
+  for (let m = -1; m <= 2; m++)
+    col.push(cr(at(G,iu-1,iv+m), at(G,iu,iv+m), at(G,iu+1,iv+m), at(G,iu+2,iv+m), fu));
+  return cr(col[0], col[1], col[2], col[3], fv);
+}
+
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setClearColor(new THREE.Color('#0a0d18'), 1);
+const DPR = Math.min(window.devicePixelRatio || 1, 2);
+function resize() {
+  renderer.setPixelRatio(DPR);
+  renderer.setSize(window.innerWidth, window.innerHeight, false);
+  cam.aspect = window.innerWidth / window.innerHeight;
+  cam.updateProjectionMatrix();
+}
+
+const scene = new THREE.Scene();
+const cam = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+const group = new THREE.Group();
+scene.add(group);
+
+const SPAN = 1.0, HSCALE = 0.95;
+
+const NU = 240, NV = 240, NP = NU * NV;
+const positions = new Float32Array(NP * 3);
+const aVal = new Float32Array(NP);
+const aJit = new Float32Array(NP);
+let s = 12345; const rnd = () => { s = (s*9301 + 49297) % 233280; return s/233280; };
+for (let i = 0; i < NP; i++) aJit[i] = 0.7 + rnd() * 0.8;
+
+const geo = new THREE.BufferGeometry();
+geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+geo.setAttribute('aVal', new THREE.BufferAttribute(aVal, 1));
+geo.setAttribute('aJit', new THREE.BufferAttribute(aJit, 1));
+
+function buildSurface(measure) {
+  const G = gridFor(measure);
+  let maxAbs = 0;
+  for (let r = 0; r < 5; r++) for (let cc = 0; cc < 5; cc++) maxAbs = Math.max(maxAbs, Math.abs(G[r][cc]));
+  let p = 0;
+  for (let iu = 0; iu < NU; iu++) {
+    const u = (iu / (NU - 1)) * 4;
+    for (let iv = 0; iv < NV; iv++) {
+      const v = (iv / (NV - 1)) * 4;
+      const val = sample(G, u, v);
+      positions[p*3]   = (u / 4 - 0.5) * 2 * SPAN;
+      positions[p*3+1] = (val / maxAbs) * HSCALE * 0.5;
+      positions[p*3+2] = (v / 4 - 0.5) * 2 * SPAN;
+      aVal[p] = val / maxAbs;
+      p++;
+    }
+  }
+  geo.attributes.position.needsUpdate = true;
+  geo.attributes.aVal.needsUpdate = true;
+}
+
+const uniforms = {
+  uMagenta: { value: new THREE.Color('#d6379b') },
+  uCyan:    { value: new THREE.Color('#2bb6d9') },
+  uGold:    { value: new THREE.Color('#f0c64a') },
+};
+const mat = new THREE.ShaderMaterial({
+  uniforms, transparent: true, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending,
+  vertexShader: /* glsl */`
+    attribute float aVal; attribute float aJit;
+    varying float vVal; varying float vRand;
+    void main() {
+      vVal = aVal; vRand = aJit;
+      vec4 mv = modelViewMatrix * vec4(position, 1.0);
+      gl_Position = projectionMatrix * mv;
+      float mag = abs(aVal);
+      gl_PointSize = (1.6 + 4.4 * mag) * aJit * (11.0 / -mv.z);
+    }
+  `,
+  fragmentShader: /* glsl */`
+    precision highp float;
+    varying float vVal; varying float vRand;
+    uniform vec3 uMagenta; uniform vec3 uCyan; uniform vec3 uGold;
+    void main() {
+      float a = smoothstep(0.5, 0.0, length(gl_PointCoord - 0.5));
+      float mag = abs(vVal);
+      vec3 hue = vVal >= 0.0 ? uGold : uMagenta;
+      float b = 0.55 + 0.85 * mag;
+      vec3 col = mix(uCyan * 0.6, hue, clamp(mag * 1.5, 0.0, 1.0)) * b;
+      col *= (0.8 + 0.4 * vRand);
+      col += vec3(1.0) * pow(mag, 2.0) * 0.55;
+      gl_FragColor = vec4(col, a);
+    }
+  `,
+});
+group.add(new THREE.Points(geo, mat));
+
+// ---- bounding box + base grid + trait labels -------------------------------
+const boxGroup = new THREE.Group(); boxGroup.visible = false; group.add(boxGroup);
+const H = HSCALE * 0.5;
+const boxMat = new THREE.LineBasicMaterial({ color: 0x37406a, transparent: true, opacity: 0.55 });
+const gridMat = new THREE.LineBasicMaterial({ color: 0x2a3252, transparent: true, opacity: 0.4 });
+{
+  const pts = [];
+  for (let k = 0; k <= 5; k++) {
+    const t = (k / 5 - 0.5) * 2 * SPAN;
+    pts.push(-SPAN, -H, t, SPAN, -H, t);
+    pts.push(t, -H, -SPAN, t, -H, SPAN);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pts), 3));
+  boxGroup.add(new THREE.LineSegments(g, gridMat));
+}
+{
+  const e = [
+    [-SPAN,-H,-SPAN, SPAN,-H,-SPAN],[SPAN,-H,-SPAN, SPAN,-H,SPAN],[SPAN,-H,SPAN,-SPAN,-H,SPAN],[-SPAN,-H,SPAN,-SPAN,-H,-SPAN],
+    [-SPAN,H,-SPAN, SPAN,H,-SPAN],[SPAN,H,-SPAN, SPAN,H,SPAN],[SPAN,H,SPAN,-SPAN,H,SPAN],[-SPAN,H,SPAN,-SPAN,H,-SPAN],
+    [-SPAN,-H,-SPAN,-SPAN,H,-SPAN],[SPAN,-H,-SPAN,SPAN,H,-SPAN],[SPAN,-H,SPAN,SPAN,H,SPAN],[-SPAN,-H,SPAN,-SPAN,H,SPAN],
+  ].flat();
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(e), 3));
+  boxGroup.add(new THREE.LineSegments(g, boxMat));
+}
+function labelSprite(ch) {
+  const cv = document.createElement('canvas'); cv.width = cv.height = 128;
+  const ctx = cv.getContext('2d');
+  ctx.fillStyle = '#aeb8d8'; ctx.font = 'bold 84px Inter, sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(ch, 64, 70);
+  const tex = new THREE.CanvasTexture(cv); tex.anisotropy = 4;
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthTest: false }));
+  sp.scale.set(0.16, 0.16, 0.16);
+  return sp;
+}
+const labelGroup = new THREE.Group(); labelGroup.visible = false; group.add(labelGroup);
+for (let k = 0; k < 5; k++) {
+  const t = (k / 4 - 0.5) * 2 * SPAN;
+  const a = labelSprite(TRAITS[k]); a.position.set(t, -H, SPAN + 0.16); labelGroup.add(a);
+  const b = labelSprite(TRAITS[k]); b.position.set(SPAN + 0.16, -H, t); labelGroup.add(b);
+}
+
+// ---- camera orbit + zoom ---------------------------------------------------
+let az = -0.7, el = 0.62, R = 4.2;
+function placeCam() {
+  cam.position.set(Math.cos(el) * Math.sin(az) * R, Math.sin(el) * R, Math.cos(el) * Math.cos(az) * R);
+  cam.lookAt(0, -0.05, 0);
+}
+let drag = false, lx = 0, ly = 0;
+canvas.addEventListener('pointerdown', (e) => { drag = true; lx = e.clientX; ly = e.clientY; });
+window.addEventListener('pointerup', () => { drag = false; });
+window.addEventListener('pointermove', (e) => {
+  if (!drag) return;
+  az -= (e.clientX - lx) * 0.006; lx = e.clientX;
+  el = Math.max(0.12, Math.min(1.4, el + (e.clientY - ly) * 0.005)); ly = e.clientY;
+});
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  R = Math.max(1.8, Math.min(9.0, R * (1 + e.deltaY * 0.0012)));
+}, { passive: false });
+
+buildSurface('comp');
+resize();
+window.addEventListener('resize', resize);
+renderer.setAnimationLoop(() => { placeCam(); renderer.render(scene, cam); });
+
+document.getElementById('measure').onchange = (e) => buildSurface(e.target.value);
+document.getElementById('box').onchange = (e) => { boxGroup.visible = e.target.checked; };
+document.getElementById('labels').onchange = (e) => { labelGroup.visible = e.target.checked; };
+document.getElementById('save').onclick = () => {
+  renderer.setPixelRatio(2);
+  renderer.setSize(window.innerWidth, window.innerHeight, false);
+  placeCam(); renderer.render(scene, cam);
+  const a = document.createElement('a');
+  a.href = renderer.domElement.toDataURL('image/png');
+  a.download = 'pairing_surface.png'; a.click();
+  renderer.setPixelRatio(DPR);
+  renderer.setSize(window.innerWidth, window.innerHeight, false);
+};
+</script>
+</body>
+</html>
