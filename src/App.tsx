@@ -74,11 +74,11 @@ function Home() {
         </p>
 
         <p className="mb-6">
-          I'm an assistant professor at <a href="https://carey.jhu.edu/faculty/harang-ju-phd/" className="link">Johns Hopkins</a>. I'm also a co-director of the <a href="https://cdhai.carey.jhu.edu/ai-agent-lab/" className="link">AI Agent Lab</a>, a digital fellow at <a href="https://ide.mit.edu" className="link">MIT</a>, and an advisor at <a href="https://twitter.com/Moku_HQ" className="link">Moku</a>.
+          I'm an assistant professor at <a href="https://carey.jhu.edu/faculty/harang-ju-phd/" className="link">Johns Hopkins</a>, a co-director of the <a href="https://cdhai.carey.jhu.edu/ai-agent-lab/" className="link">AI Agent Lab</a>, a digital fellow at <a href="https://ide.mit.edu" className="link">MIT</a>, and an advisor at <a href="https://twitter.com/Moku_HQ" className="link">Moku</a>.
         </p>
 
         <p className="mb-6">
-          My recent research asks <a href="/coordination/" className="link">when coordination is avoidable</a>, <a href="/pairing/" className="link">how personality pairing shapes human-AI teams</a>, and <a href="https://www.pnas.org/doi/10.1073/pnas.2521774123" className="link" target="_blank" rel="noreferrer">how agents negotiate at scale</a>.
+          My recent research asks <a href="/coordination/" className="link">when coordination is avoidable</a> and <a href="/pairing/" className="link">how personality pairing shapes human-AI teams</a>.
         </p>
 
         <p className="mb-6">
