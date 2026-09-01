@@ -177,6 +177,23 @@ em { font-style: italic; }
 .ff-cap strong { color: var(--ink); font-weight: 600; }
 
 /* ---------- cite ---------- */
+/* press link card */
+.press-link {
+  display: flex; flex-direction: column; gap: 8px;
+  margin: 30px 0 0; padding: 22px 24px;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 14px;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.press-link:hover { transform: translateY(-2px); border-color: var(--ink); box-shadow: 0 4px 14px rgba(0,0,0,0.06); text-decoration: none; }
+.pl-tag {
+  align-self: flex-start; font-family: var(--code); font-size: 10px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-mute);
+  background: var(--cream-2); border: 1px solid var(--rule-soft); border-radius: 6px; padding: 3px 8px;
+}
+.pl-title { font-family: var(--serif); font-size: 21px; font-weight: 500; color: var(--ink); line-height: 1.2; }
+.pl-go { font-size: 14px; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; }
+.pl-go .arr { font-size: 12px; }
+
 .cite { padding: 70px 0 90px; border-top: 1px solid var(--rule); background: var(--cream-2); position: relative; }
 .bib {
   font-family: var(--code); font-size: 13px; line-height: 1.6;
