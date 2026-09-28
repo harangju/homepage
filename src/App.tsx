@@ -74,11 +74,11 @@ function Home() {
         </p>
 
         <p className="mb-6">
-          I'm an assistant professor at <a href="https://carey.jhu.edu/faculty/harang-ju-phd/" className="link">Johns Hopkins</a>, a co-director of the <a href="https://cdhai.carey.jhu.edu/ai-agent-lab/" className="link">AI Agent Lab</a>, a digital fellow at <a href="https://ide.mit.edu" className="link">MIT</a>, and an advisor at <a href="https://twitter.com/Moku_HQ" className="link">Moku</a>.
+          I'm an assistant professor at <a href="https://carey.jhu.edu/faculty/harang-ju-phd/" className="link">Johns Hopkins</a> where I co-direct the <a href="https://cdhai.carey.jhu.edu/ai-agent-lab/" className="link">AI Agent Lab</a>.
         </p>
 
         <p className="mb-6">
-          My recent research asks <a href="/coordination/" className="link">when coordination is avoidable</a> and <a href="/pairing/" className="link">how personality pairing shapes human-AI teams</a>.
+          My recent research asks <a href="/coordination/" className="link">when coordination is avoidable</a> and <a href="/pairing/" className="link">how personality pairing improves human-AI collaboration</a>.
         </p>
 
         <p className="mb-6">
