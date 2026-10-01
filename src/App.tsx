@@ -78,15 +78,15 @@ function Home() {
         </p>
 
         <p className="mb-6">
-          My recent research asks <a href="/coordination/" className="link">when coordination is avoidable</a> and <a href="/pairing/" className="link">how personality pairing improves human-AI collaboration</a>.
+          I study and design how agents work together, human or machine.
         </p>
 
         <p className="mb-6">
-          Previously, I was a postdoc at <a href="https://ide.mit.edu" className="link">MIT</a> and received my PhD from <a href="https://www.upenn.edu/" className="link">UPenn</a>.
+          Previously, I completed my postdoc at <a href="https://ide.mit.edu" className="link">MIT</a> and PhD at <a href="https://www.upenn.edu/" className="link">UPenn</a>.
         </p>
 
         <p className="mb-6">
-          Outside of work, I enjoy taking <a href="https://www.instagram.com/harangju/" className="link">photos</a>, and I affirm the <a href="https://www.oca.org/orthodoxy/prayers/symbol-of-faith" className="link">Nicene Creed</a>.
+          Outside of work, I enjoy taking <a href="https://www.instagram.com/harangju/" className="link">photos</a>.
         </p>
       </div>
     </main>
