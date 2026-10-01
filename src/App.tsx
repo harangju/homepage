@@ -78,7 +78,7 @@ function Home() {
         </p>
 
         <p className="mb-6">
-          I study and design how agents work together, human or machine.
+          I study and design how people and agents work together.
         </p>
 
         <p className="mb-6">
